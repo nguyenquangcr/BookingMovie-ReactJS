@@ -1,0 +1,17 @@
+.film{
+    position: relative;
+};
+.name-movie{
+    position: absolute;
+    top: 180px;
+    left: 30px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+};
+.improve-name-film{
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}

@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import SigninScreen from './Screen/Signin';
 
-
 function App() {
   const credentialStr = localStorage.getItem("credentials");
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ function App() {
         )
       }
   }
-
   useEffect(() => {
     _getCredentialFromLocal()
   }, [])

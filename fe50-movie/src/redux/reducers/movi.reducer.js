@@ -1,6 +1,6 @@
 const initialState = {
     movieList: null,
-    movieInfo: null,
+    movieInfo: null
   };
   
   const movieReducer = (state = initialState, action) => {

@@ -6,7 +6,7 @@ class UserService{
             Axios({
                 method: 'POST',
                 url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy',
-                data: value
+                data: value,
             })
         )
     }

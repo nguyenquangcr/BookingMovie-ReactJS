@@ -24,7 +24,6 @@ export default class SlickHeader extends Component {
         };
         return (
             <div className="container slide-item">
-                <h2> Single Item</h2>
                 <Slider {...settings}>
                     <div>
                         <a href="#">
