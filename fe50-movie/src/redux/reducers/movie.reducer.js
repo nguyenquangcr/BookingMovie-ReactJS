@@ -1,6 +1,7 @@
 const initialState = {
     movieList: null,
     movieInfo: null,
+    listDetailFilm: {},
     listSoonMovie: [
       {
           hinhAnh: 'http://demo.amytheme.com/movie/demo/book-ticket/wp-content/uploads/2016/12/img_3-1.jpg',
@@ -41,6 +42,9 @@ const initialState = {
       }
       case "GET_MOVIE_DETAIL_SUCCESS": {
         return { ...state, movieInfo: payload };
+      }
+      case 'GET-LIST-DETAIL-HOME' :{
+        return {...state, listDetailFilm: payload};
       }
       default:
         return state;

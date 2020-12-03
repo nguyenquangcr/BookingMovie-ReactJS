@@ -69,3 +69,25 @@ function getMovieDetailFailed(error) {
     payload: error,
   };
 }
+
+export const actGetListDetailFilm = (id) => {
+  return function (dispatch) {
+    // call api
+    Axios.get(
+      `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+    )
+      .then(function (res) {
+        dispatch(getListDetailHome(res.data))
+      })
+      .catch(function (err) {
+        //
+      });
+  };
+}
+
+function getListDetailHome(film) {
+  return {
+    type: "GET-LIST-DETAIL-HOME",
+    payload: film,
+  };
+}
