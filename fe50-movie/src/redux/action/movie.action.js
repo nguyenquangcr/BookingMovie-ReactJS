@@ -10,11 +10,6 @@ export function getMovieListRequest() {
     )
       .then((res) => {
         dispatch(getMovieListSuccess(res.data));
-        // stop loading
-        // test
-        // setTimeout(function () {
-        //   dispatch(stopLoading());
-        // }, 5000);
         dispatch(stopLoading());
       })
       .catch((error) => {

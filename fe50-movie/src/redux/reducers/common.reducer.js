@@ -3,7 +3,7 @@ const initialState = {
   };
   
   const commonReducer = (state = initialState, action) => {
-    let { type, payload } = action; // bóc tách ES6
+    let { type, payload } = action; 
     switch (type) {
       case "START_LOADING": {
         return { ...state, isLoading: true };

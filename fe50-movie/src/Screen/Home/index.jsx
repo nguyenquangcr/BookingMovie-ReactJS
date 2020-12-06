@@ -6,6 +6,7 @@ import Footer from '../../components/footer';
 import './style.css'
 import HomeMovie from '../../components/home/home-movie';
 import TicketBooking from '../../components/home/ticket-booking';
+import Cinema from '../../components/home/cinema';
 
 const Home = () => {
 
@@ -25,6 +26,8 @@ const Home = () => {
                 </div>
 
                 <HomeMovie />
+
+                <Cinema />
 
             </div>
 

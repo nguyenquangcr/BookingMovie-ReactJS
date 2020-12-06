@@ -6,6 +6,7 @@ import SignupScreen from './Screen/Signup';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import SigninScreen from './Screen/Signin';
+import Booking from './Screen/Booking';
 
 
 
@@ -33,11 +34,14 @@ function App() {
         <Header />
       </div>
       <Switch>
-        <Route path='/dangky' exact component={SignupScreen} />
-        <Route path='/dangnhap' exact component={SigninScreen} />
+        <Route path='/dangky'  component={SignupScreen} />
+        <Route path='/dangnhap'  component={SigninScreen} />
         <Route
-         path='/' exact 
-         component={Home} />
+          path='/' exact={true}
+          component={Home} />
+        <Route path="/booking/:maLichChieu">
+          <Booking />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

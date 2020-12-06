@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 //css
 import './style.scss'
 import { useDispatch } from "react-redux";
@@ -11,13 +11,13 @@ const TicketBooking = (props) => {
 
     const [state, setState] = useState(
         {
+            maLichChieu: "",
             maRap: "",
             dateChieu: "",
             statusFilm: false,
             statusRap: false,
             statusDate: false,
             statusSuat: false,
-            maLichChieu: "",
             statusButton: false,
         }
     );
@@ -97,7 +97,6 @@ const TicketBooking = (props) => {
             dateChieu: ngayChieuUpdate
         })
     }
-    console.log(state.dateChieu);
 
     //gio chieu
     const renderGio = () => {
@@ -110,10 +109,10 @@ const TicketBooking = (props) => {
                                 return (
                                     <option key={index} value={status.maLichChieu} >
                                         {new Date(status.ngayChieuGioChieu).toLocaleTimeString('vi-VN'
-                                        , { hour: '2-digit', }
-                                        )}Gio                                       
+                                            , { hour: '2-digit', }
+                                        )}Gio
                                         {new Date(status.ngayChieuGioChieu).toLocaleTimeString('vi-VN'
-                                        , {  minute: '2-digit' }
+                                            , { minute: '2-digit' }
                                         )} Phut
                                     </option>
                                 )
@@ -125,15 +124,27 @@ const TicketBooking = (props) => {
         }
     }
 
-    const handleOnchangeGio = () => {
-        const locationLang = 'vi-VN';
-        const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-        const options2 = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        const convertDate = new Date('2020-11-30T17:53:26.577');
-        console.log(convertDate.toLocaleDateString(locationLang, options));
-        console.log(convertDate.toLocaleTimeString(locationLang, options2));
+    const handleOnchangeGio = event => {
+        let maLichChieu = event.target.value
+        setState({
+            ...state,
+            maLichChieu,
+            statusButton: true
+        })
     }
 
+    //submit
+    const renderSubmit = () => {
+        if (state.statusButton) {
+            return (
+                <button type="submit" className="btn-dat-ve">
+                    <Link to={`/booking/${state.maLichChieu}`}>Mua vé</Link>
+                </button>
+            )
+        } else {
+            return <button disabled type="submit" className="btn-dat-ve">Mua vé</button >
+        }
+    }
 
 
     return (
@@ -168,6 +179,9 @@ const TicketBooking = (props) => {
                     </option>
                     {renderGio()}
                 </select>
+            </div>
+            <div className='center'>
+                {renderSubmit()}
             </div>
         </div>
     )
