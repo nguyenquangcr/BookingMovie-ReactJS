@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './style.css';
+import './style.scss';
 import Slider from 'react-slick';
 
 // Import css files
@@ -14,58 +14,113 @@ import slider4 from '../../assets/image/slider4.jpg';
 export default class SlickHeader extends Component {
     render() {
         const settings = {
-            dots: true,
             infinite: true,
-            speed: 1000,
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
+            arrows: false,
+            draggable:true,
             autoplay: true,
-            autoplaySpeed: 800,
+            autoplaySpeed: 2000,
+            dots: true,
+            responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+                }
+            ]
         };
         return (
-            <div className="container slide-item">
-                <Slider {...settings}>
-                    <div>
-                        <a href="#">
-                            <img src={slider1} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider2} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider3} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider4} alt="" />
-                        </a>
-                    </div>                    <div>
-                        <a href="#">
-                            <img src={slider1} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider2} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider3} alt="" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img src={slider4} alt="" />
-                        </a>
-                    </div>
-                </Slider>
-            </div>
+            <Slider className="banner-slider" {...settings}>
+                <div className="banner-slider-item">
+                    <a href="#">
+                        <img className="banner-slider-image" src={slider1} alt="" />
+                        <div className="banner-slider-overlay">
+                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-title">
+                                Tên phim
+                            </div>
+                            <div className="banner-slider-star">
+                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div className="banner-slider-item">
+                    <a href="#">
+                        <img className="banner-slider-image" src={slider2} alt="" />
+                        <div className="banner-slider-overlay">
+                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-title">
+                                Tên phim
+                            </div>
+                            <div className="banner-slider-star">
+                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div className="banner-slider-item">
+                    <a href="#">
+                        <img className="banner-slider-image" src={slider3} alt="" />
+                        <div className="banner-slider-overlay">
+                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-title">
+                                Tên phim
+                            </div>
+                            <div className="banner-slider-star">
+                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div className="banner-slider-item">
+                    <a href="#">
+                        <img className="banner-slider-image" src={slider4} alt="" />
+                        <div className="banner-slider-overlay">
+                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-title">
+                                Tên phim
+                            </div>
+                            <div className="banner-slider-star">
+                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div className="banner-slider-item">
+                    <a href="#">
+                        <img className="banner-slider-image" src={slider4} alt="" />
+                        <div className="banner-slider-overlay">
+                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-title">
+                                Tên phim
+                            </div>
+                            <div className="banner-slider-star">
+                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </Slider>
         )
     }
 }

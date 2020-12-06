@@ -1,97 +1,80 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/image/logo1.png'
+import SlickHeader from '../slider';
 import './style.scss';
 
-class Header extends Component{
+class Header extends Component {
 
-    _clearItem = ()=>{
+    _clearItem = () => {
         localStorage.removeItem('credentials');
         this.props.dispatch({
-            type:'CLEAR_CREDENTIAL'
+            type: 'CLEAR_CREDENTIAL'
         })
     }
 
     render() {
         return (
-            <div className="container">
-                <nav className="navbar navbar-expand-md navbar-dark container">
-                    <a className="navbar-brand" href="#"><img style={{ height: "52px" }} src={logo} alt="Girl in a jacket" /></a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarCollapse">
-                        <ul className="navbar-nav mr-auto">
-                        <li className="nav-item dropdown dropdown-6">
-                                <NavLink exact activeStyle={{color:'red'}} to='/' className="nav-link" href="#">TRANG CHỦ<i className="fa fa-angle-down" aria-hidden="true"></i></NavLink>
-                                <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-6">
-                                    <li className="dropdown_item">Item 1</li>
-                                    <li className="dropdown_item">Item 2</li>
-                                    <li className="dropdown_item">Item 3</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown dropdown-7">
-                                <a className="nav-link" href="#">PHIM<i className="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-7">
-                                    <li className="dropdown_item">Item 1</li>
-                                    <li className="dropdown_item">Item 2</li>
-                                    <li className="dropdown_item">Item 3</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown dropdown-8">
-                                <a className="nav-link" href="#">NGƯỜI NỔI TIẾNG<i className="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-8">
-                                    <li className="dropdown_item">Item 1</li>
-                                    <li className="dropdown_item">Item 2</li>
-                                    <li className="dropdown_item">Item 3</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown dropdown-9">
-                                <a className="nav-link" href="#">TIN TỨC<i className="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-9">
-                                    <li className="dropdown_item">Item 1</li>
-                                    <li className="dropdown_item">Item 2</li>
-                                    <li className="dropdown_item">Item 3</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown dropdown-10">
-                                <a className="nav-link" href="#">QUỐC GIA<i className="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul className="dropdown_menu dropdown_menu--animated dropdown_menu-10">
-                                    <li className="dropdown_item">Item 1</li>
-                                    <li className="dropdown_item">Item 2</li>
-                                    <li className="dropdown_item">Item 3</li>
-                                </ul>
-                            </li>
-    
+            <div className="header-container">
+                <div className="header-logo"><NavLink className="" to='/'><img className="header-logo-img" src={logo} alt="" /></NavLink></div>
+                <ul className="header-menu header-menu-left">
+                    <li className="header-menu-item">
+                        <NavLink exact activeClassName={'active'} to='/' className="header-menu-link">Trang chủ</NavLink>
+                    </li>
+                    <li className="header-menu-item">
+                        <NavLink className="header-menu-link" to='/phim'>Phim<i className="fa fa-angle-down" aria-hidden="true"></i>
+                        </NavLink>
+                        <ul className="header-menu-dropdown">
+                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-dang-chieu'>Phim đang chiếu</NavLink></li>
+                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-sap-chieu'>Phim sắp chiếu</NavLink></li>
                         </ul>
-                        <ul className="form-inline mt-2 mt-md-0 navbar-nav ">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">TRANG<i className="fa fa-angle-down" aria-hidden="true"></i></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">TRỢ GIÚP</a>
-                            </li>
-                            {
-                                        this.props.credentials ?
-                                            <li style={{display:'flex'}} className="nav-item">
-                                                <span className="nav-link">Hi {this.props.credentials.hoTen},</span>
-                                                {/* <NavLink activeStyle={{ color: "red" }} className="nav-link" to="/signin">Sign</NavLink> */}
-                                                <button onClick={this._clearItem} className="btn btn-success">Thoat</button>
-                                            </li>
-                                            :
-                                            <>
-                                                <li className="nav-item">
-                                                    <NavLink activeStyle={{ color: "red" }} className="nav-link" to="/dangky">Đăng Ký</NavLink>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <NavLink activeStyle={{ color: "red" }} className="nav-link" to="/dangnhap">Đăng Nhập</NavLink>
-                                                </li>
-                                            </>
-                                    }
+                    </li>
+                    <li className="header-menu-item">
+                        <NavLink className="header-menu-link" to='/tin-tuc'>Tin tức<i className="fa fa-angle-down" aria-hidden="true"></i></NavLink>
+                        <ul className="header-menu-dropdown">
+                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/goc-dien-anh'>Góc điện ảnh</NavLink></li>
+                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/su-kien'>Sự kiện</NavLink></li>
                         </ul>
-                    </div>
-                </nav>
+                    </li>
+                    <li className="header-menu-item">
+                        <NavLink className="header-menu-link" to='/ho-tro'>Hỗ trợ</NavLink>
+                    </li>
+
+                </ul>
+                <ul className="header-menu header-menu-right">
+                    {
+                        this.props.credentials ?
+                            <li style={{ display: 'flex' }} className="header-menu-item">
+                                <span className="header-menu-link">Hi {this.props.credentials.hoTen},</span>
+                                <button onClick={this._clearItem} className="btn btn-success">Thoát</button>
+                            </li>
+                            :
+                            <>
+                                <li className="header-menu-item">
+                                    <NavLink className="header-menu-link" to="/dangky">Đăng Ký</NavLink>
+                                </li>
+                                <li className="header-menu-item">
+                                    <NavLink className="header-menu-link header-menu-link-login" to="/dangnhap">Đăng Nhập</NavLink>
+                                </li>
+                            </>
+                    }
+                </ul>
+                <div className="header-search">
+                    <select className="header-search-select">
+                        <option value="united">TV show</option>
+                        <option value="saab">Others</option>
+                    </select>
+                    <input className="header-search-input" type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for" />
+                    <i className="fa fa-search header-search-icon"></i>
+                </div>
+                <div className="header-social">
+                    <span>Theo dõi: </span>
+                    <a href="#link-facebook"><i className="fa fa-facebook" /></a>
+                    <a href="#link-twitter"><i className="fa fa-twitter" /></a>
+                    <a href="#link-googleplus"><i className="fa fa-google-plus" /></a>
+                    <a href="#link-youtube"><i className="fa fa-youtube" /></a>
+                </div>
             </div>
         )
     }

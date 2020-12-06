@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, connect } from "react-redux";
-import classNames from 'classnames';
-import './showMovie.scss';
+import './film.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,19 +16,16 @@ const ShowMovie = (props) => {
 
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
+            console.log(item);
             return (
-                <div className="movie" key={index}>
-                    <div className="film-item">
-                        <div className='film'>
-                            <a href>
-                                <img style={{ width: '170px', height: '255px'}} src={item.hinhAnh} alt="film" />
-                            </a>
-                            <div className='film-child'>
-                                <p className={classNames({'improve-name-film':item.tenPhim && item.tenPhim.length >= 13})}>{item.tenPhim}</p>
-                            <p className='film-rating'><i style={{color:'yellow'}} class="fa fa-star"></i> {item.danhGia}/10</p>
-                            </div>
-                        </div>
-
+                <div className="film-item" key={index}>
+                    <a href>
+                        <img className="film-image" src={item.hinhAnh} alt="film" />
+                    </a>
+                    <div className="film-overlay">
+                        <p className="film-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
+                        <p className="film-title">{item.tenPhim}</p>
+                        <p className="film-star"><i className="fa fa-star"></i> <span>{item.danhGia}/</span>10</p>
                     </div>
                 </div>
             )

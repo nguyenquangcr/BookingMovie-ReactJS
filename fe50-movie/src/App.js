@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import SigninScreen from './Screen/Signin';
 import Booking from './Screen/Booking';
+import SlickHeader from './components/slider';
 
 
 
@@ -30,15 +31,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='header'>
-        <Header />
-      </div>
       <Switch>
         <Route path='/dangky'  component={SignupScreen} />
         <Route path='/dangnhap'  component={SigninScreen} />
-        <Route
-          path='/' exact={true}
-          component={Home} />
+        <Route path='/' exact={true} component={Home}>
+        </Route>
         <Route path="/booking/:maLichChieu">
           <Booking />
         </Route>
