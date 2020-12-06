@@ -3,6 +3,7 @@ const initalState = {
     ],
     listDetailCinema: [
     ],
+    listMovieDetailByLocation:null,
     maCumRap: "",
     maCumRapFirst: "",
     isValid: true,
@@ -16,6 +17,8 @@ export const cinemaReducer = (state=initalState , action) =>{
             return {...state,listCinema:payload};
         case 'GET_CINEMA_DETAIL_SUCCESS':
             return {...state,listDetailCinema:payload}
+        case 'GET_LIST_MOVIE_DETAIL_BY_LOCATION_SUCCESS':
+            return {...state,listMovieDetailByLocation:payload}
         default:
             return state;
     }
