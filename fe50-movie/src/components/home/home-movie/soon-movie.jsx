@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
-import classNames from 'classnames';
 //css
-import './soon-movie.scss';
+import './film.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,13 +15,13 @@ const SoonMovie = (props) => {
         return props.listSoonMovie && props.listSoonMovie.map((item, index) => {
             return (
                 <div className="film-item" key={index}>
-                    <div className='film'>
-                        <a href>
-                            <img style={{ width: '180px', height: '255px', paddingRight: '45px' }} src={item.hinhAnh} alt="film" />
-                        </a>
-                        <p className={classNames({'improve-name-film':item.tenPhim && item.tenPhim.length >= 10},"name-movie")} >
-                            {item.tenPhim}
-                        </p>
+                    <a href>
+                        <img className="film-image" src={item.hinhAnh} alt="film" />
+                    </a>
+                    <div className="film-overlay">
+                        <p className="film-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
+                        <p className="film-title">{item.tenPhim}</p>
+                        <p className="film-star"><i className="fa fa-star"></i> <span>{item.danhGia}/</span>10</p>
                     </div>
                 </div>
             )
@@ -33,7 +32,7 @@ const SoonMovie = (props) => {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         arrows: false,
@@ -65,7 +64,7 @@ const SoonMovie = (props) => {
         ]
     }
     return (
-        <div data-aos="fade-down" data-aos-duration="600" className="soon-movie" style={{ paddingRight: '210px' }}>
+        <div data-aos="fade-down" data-aos-duration="600" className="soon-movie">
             <Slider {...settings} className="my-movie">
                 {renderHtml()}
             </Slider>
