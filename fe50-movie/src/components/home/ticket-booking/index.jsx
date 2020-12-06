@@ -137,50 +137,50 @@ const TicketBooking = (props) => {
     const renderSubmit = () => {
         if (state.statusButton) {
             return (
-                <button type="submit" className="btn-dat-ve">
+                <button type="submit" className="ticket-booking-button">
                     <Link to={`/booking/${state.maLichChieu}`}>Mua vé</Link>
                 </button>
             )
         } else {
-            return <button disabled type="submit" className="btn-dat-ve">Mua vé</button >
+            return <button disabled type="submit" className="ticket-booking-button">Mua vé</button >
         }
     }
 
 
     return (
-        <div className='ticket-booking'>
-            <div className="select-group">
-                <select onChange={handleOnchangeFilm} className="form-control select-dat-ve">
+        <div className="ticket-booking">
+            <div className="select-group ticket-booking-group">
+                <select onChange={handleOnchangeFilm} className="form-control ticket-booking-select">
                     <option value="chon-phim" style={{ display: "none" }}>
                         Chọn phim
                     </option>
                     {renderListFilm()}
                 </select>
             </div>
-            <div className="select-group">
-                <select onChange={handleOnchangeCinema} className="form-control select-dat-ve">
+            <div className="select-group ticket-booking-group">
+                <select onChange={handleOnchangeCinema} className="form-control ticket-booking-select">
                     <option value="chon-rap" style={{ display: "none" }}>Chọn rạp</option>
                     {/* {this.validationChonRap()} */}
                     {renderRap()}
                 </select>
             </div>
-            <div className="select-group">
-                <select onChange={handleOnchangeDate} className="form-control select-dat-ve">
+            <div className="select-group ticket-booking-group">
+                <select onChange={handleOnchangeDate} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
                         Chọn Ngay Chieu
                     </option>
                     {renderDate()}
                 </select>
             </div>
-            <div className="select-group">
-                <select onChange={handleOnchangeGio} className="form-control select-dat-ve">
+            <div className="select-group ticket-booking-group">
+                <select onChange={handleOnchangeGio} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
                         Chọn Gio Chieu
                     </option>
                     {renderGio()}
                 </select>
             </div>
-            <div className='center'>
+            <div className="center">
                 {renderSubmit()}
             </div>
         </div>
