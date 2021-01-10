@@ -10,12 +10,28 @@ const Cinema = (props) => {
     const listCumRap = props.listMovieDetailByLocation === null ? '' : props.listMovieDetailByLocation[0].lstCumRap
     const renderMovieByLocation = () => {
         return listCumRap && listCumRap.map((item, index) => {
-            console.log(item.maCumRap);
             if (item.maCumRap === maCumRapLocation) {
                 return item.danhSachPhim.map((product, index) => {
-                    console.log(product.tenPhim);
-                    return (
+                    return (<div>
+                        <img src={product.hinhAnh} alt={product.tenPhim} style={{ width: '20px' }} />
                         <div>{product.tenPhim}</div>
+                        2D Digital
+                        <div>{product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
+                            return (
+                                <div>
+                                    {/* {xuatChieu.ngayChieuGioChieu} */}
+                                    {new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN'
+                                        , { hour: '2-digit', }
+                                    )}Gio
+                                    {new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN'
+                                        , { minute: '2-digit' }
+                                    )}Phut
+                                    ~~
+                                    {/* truyen ham vao */}
+                                </div>
+                            )
+                        })}</div>
+                    </div>
                     )
                 })
             }
@@ -45,17 +61,17 @@ const Cinema = (props) => {
 
     const HandleChangeRap = (maHeThongRap) => {
         setcumRapFirst(maHeThongRap)
-        if(maHeThongRap==='CGV'){
+        if (maHeThongRap === 'CGV') {
             setmaCumRapLocation('cgv-aeon-binh-tan')
-        }else if(maHeThongRap==='BHDStar'){
+        } else if (maHeThongRap === 'BHDStar') {
             setmaCumRapLocation('bhd-star-cineplex-3-2')
-        }else if(maHeThongRap==='CineStar'){
+        } else if (maHeThongRap === 'CineStar') {
             setmaCumRapLocation('cns-hai-ba-trung')
-        }else if(maHeThongRap==='Galaxy'){
+        } else if (maHeThongRap === 'Galaxy') {
             setmaCumRapLocation('glx-kinh-duong-vuong')
-        }else if(maHeThongRap==='LotteCinima'){
+        } else if (maHeThongRap === 'LotteCinima') {
             setmaCumRapLocation('lotte-cantavil')
-        }else if(maHeThongRap==='MegaGS'){
+        } else if (maHeThongRap === 'MegaGS') {
             setmaCumRapLocation('megags-cao-thang')
         }
     }
@@ -63,7 +79,7 @@ const Cinema = (props) => {
     //render he thong
     const renderLocation = () => {
         return props.detailLocation.map((item, index) => {
-            return (    
+            return (
                 <div rel="js-location-item" onClick={() => handleChangeLocation(item.maCumRap)} key={index} className='m-2'>
                     <div>Ten Rap: {item.tenCumRap}</div>
                     <div>Dia Chi {item.diaChi}</div>
@@ -78,14 +94,14 @@ const Cinema = (props) => {
     return (
         <div>
             <h1>Cinema</h1>
-            <div style={{ display: 'flex' }}>
-                {renderRap()}
-            </div>
             <div className='row'>
-                <div className='col-6'>
+                <div className='col-3'>
+                    {renderRap()}
+                </div>
+                <div className='col-4'>
                     {renderLocation()}
                 </div>
-                <div className='col-6'>
+                <div className='col-5'>
                     {renderMovieByLocation()}
                 </div>
             </div>

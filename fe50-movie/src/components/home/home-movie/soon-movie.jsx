@@ -10,7 +10,6 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 
 const SoonMovie = (props) => {
-    console.log(props.listSoonMovie);
     const renderHtml = () => {
         return props.listSoonMovie && props.listSoonMovie.map((item, index) => {
             return (

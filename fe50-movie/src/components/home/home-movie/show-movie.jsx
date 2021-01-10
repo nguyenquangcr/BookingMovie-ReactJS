@@ -12,11 +12,10 @@ const ShowMovie = (props) => {
     useEffect(() => {
         dispatch(getMovieListRequest())
     }
-        , [dispatch]);
+    , [dispatch]);
 
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
-            console.log(item);
             return (
                 <div className="film-item" key={index}>
                     <a href>

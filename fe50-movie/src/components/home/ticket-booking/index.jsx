@@ -65,7 +65,6 @@ const TicketBooking = (props) => {
     }
     //date
     const renderDate = () => {
-
         if (state.maRap) {
             return props.listDetailFilm.heThongRapChieu && props.listDetailFilm.heThongRapChieu.map(item => {
                 if (item.maHeThongRap === state.maRap) {
@@ -160,7 +159,6 @@ const TicketBooking = (props) => {
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeCinema} className="form-control ticket-booking-select">
                     <option value="chon-rap" style={{ display: "none" }}>Chọn rạp</option>
-                    {/* {this.validationChonRap()} */}
                     {renderRap()}
                 </select>
             </div>
