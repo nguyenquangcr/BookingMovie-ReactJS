@@ -1,4 +1,4 @@
-.ticket-booking{
+.ticket-booking {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
     width: 100%;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transform: translateY(80px);
     z-index: 2;
     &-group {
@@ -18,7 +18,7 @@
         padding-right: 10px;
         &::before {
             background-color: #ccc;
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             right: 0;

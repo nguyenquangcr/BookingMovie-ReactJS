@@ -165,7 +165,7 @@ const TicketBooking = (props) => {
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeDate} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
-                        Chọn Ngay Chieu
+                        Chọn ngày chiếu
                     </option>
                     {renderDate()}
                 </select>
@@ -173,7 +173,7 @@ const TicketBooking = (props) => {
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeGio} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
-                        Chọn Gio Chieu
+                        Chọn giờ chiếu
                     </option>
                     {renderGio()}
                 </select>

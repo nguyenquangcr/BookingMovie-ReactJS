@@ -3,6 +3,33 @@
         position: relative;
         margin-left: 10px;
         padding-right: 10px;
+        
+        a {
+            display: block;
+            position: relative;
+            &::before {
+                content: '';
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+                transform: scale(0);
+            }
+        }
+        &:hover {
+            a {
+                &::before {
+                    opacity: 0.7;
+                    visibility: visible;
+                    transform: scale(1);
+                }
+            }
+        }
     }
     
     &-image {
@@ -19,18 +46,18 @@
     }
 
     &-time {
-        background-color: #f5b50a;
+        background-color: var(--colorThird);
         text-align: center;
         padding: 3px 5px;
         border-radius: 3px;
     }
 
     &-title {
-        text-transform: uppercase;
+        text-transform: capitalize;
         margin-top: 15px;
         font-size: 18px;
         &:hover {
-            color: var(--colorSecondary);
+            color: var(--colorThird);
         }
     }
 
@@ -52,15 +79,7 @@
         right: -15px;
         li {
             button:before {
-                background-color: #fff;
-                content: '' !important;
-                width: 10px !important;
-                height: 10px !important;
-                border-radius: 50%;
-                opacity: 1 !important;
-            }
-            &.slick-active button:before {
-                background-color: var(--colorSecondary) !important;
+                font-size: 12px;
             }
         }
     }

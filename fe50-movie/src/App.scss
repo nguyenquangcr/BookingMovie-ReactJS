@@ -3,7 +3,11 @@
   --colorSecondary: #dcf836;
   --colorThird: #dd003f;
 }
-ul, ol {
+body {
+  background-color: var(--colorPrimary);
+}
+ul,
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -42,5 +46,20 @@ img {
   .section-padding {
     padding-top: 70px;
     padding-bottom: 70px;
+  }
+}
+.slick-dots li {
+  button {
+    &::before {
+      color: #fff !important;
+    }
+  }
+  &.slick-active {
+    button {
+      &::before {
+        opacity: 1 !important;
+        color: var(--colorSecondary) !important;
+      }
+    }
   }
 }

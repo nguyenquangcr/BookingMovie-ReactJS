@@ -109,7 +109,6 @@ const Cinema = (props) => {
     return (
         <section className="mvschedule section-padding">
             <div className="container">
-                <h1 className="heading">Danh sách lịch chiếu phim theo rạp</h1>
                 <div className="mvschedule-container">
                     <div className="mvschedule-cinema scroll-custom">
                         {renderRap()}
