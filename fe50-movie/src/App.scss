@@ -1,0 +1,46 @@
+:root {
+  --colorPrimary: #020d18;
+  --colorSecondary: #dcf836;
+  --colorThird: #dd003f;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.scroll-custom {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #405266;
+  }
+}
+
+.heading {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.section-padding {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+@media (min-width: 992px) {
+  .section-padding {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

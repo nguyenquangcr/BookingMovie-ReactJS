@@ -20,7 +20,7 @@ const Home = () => {
                     <TicketBooking />
                 </div>
             </div>
-            <div className="container">
+            <div className="section-container">
                 <HomeMovie />
 
                 <Cinema />

@@ -35,7 +35,7 @@ class SignupScreen extends Component {
                     hoTen: "",      
                     email: "",
                     soDt: "",
-                    maNhom: "GP01",
+                    maNhom: "GP05",
                     maLoaiNguoiDung: "KhachHang",
                 }}    
                 validationSchema={signupUserSchema}
@@ -90,7 +90,7 @@ class SignupScreen extends Component {
                         {/* <div className='form-group'>
                             <label>Ma Nhom: </label>
                             <Field component='select' className='form-control' name='maNhom' onChange={formikProps.handleChange} >
-                                <option>GP01</option>
+                                <option>GP05</option>
                                 <option>GP02</option>
                                 <option>GP03</option>
                                 <option>GP04</option>

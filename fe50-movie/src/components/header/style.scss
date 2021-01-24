@@ -25,14 +25,15 @@
 
         ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         &-menu {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            padding: 0;
-            margin: 0;
+            flex-grow: 1;
             a {
                 text-decoration: none;
                 text-transform: uppercase;
@@ -40,6 +41,14 @@
             }
             &-left {
                 flex-grow: 1;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+            &-right {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
             }
             &-item {
                 position: relative;
@@ -72,7 +81,7 @@
                 top: 0;
                 left: 0;
                 opacity: 0;
-                min-width: 200px;
+                min-width: 210px;
                 padding: 0;
                 margin: 0;
                 visibility: hidden;
@@ -160,10 +169,48 @@
         }
     }
 }
-@media (min-width: 980px) {
+@media (min-width: 992px) {
     .header {
         &-menu {
             margin-left: 30px;
+            &-left {
+                position: relative;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+        }
+        &-bar {
+            display: none;
+        }
+    }
+}
+@media (max-width: 992px) {
+    .header {
+        &-logo {
+            order: 2;
+            flex-grow: 1;
+            text-align: center;
+        }
+        &-bar {
+            color: #fff;
+            border: 2px solid #fff;
+            order: 1;
+            font-size: 22px;
+            border-radius: 6px;
+            width: 37px;
+            height: 37px;
+            line-height: 33px;
+            text-align: center;
+        }
+        &-menu-right {
+            order: 3;
+        }
+        &-search {
+            order: 4;
+        }
+        &-social {
+            order: 5;
         }
     }
 }

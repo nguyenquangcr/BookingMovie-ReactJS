@@ -59,7 +59,7 @@ function GetListDetailLocationFalse(err) {
 export function actionGetListMovieByLocation(maHeThongRap) {
     return(dispatch) =>{
         Axios.get(
-            `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP01`
+            `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP05`
         ).then(
             res =>{
                 dispatch(GetListMovieByLocationSuccess(res.data))

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, connect } from "react-redux";
-import './film.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,14 +16,16 @@ const ShowMovie = (props) => {
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
             return (
-                <div className="film-item" key={index}>
-                    <a href>
-                        <img className="film-image" src={item.hinhAnh} alt="film" />
-                    </a>
-                    <div className="film-overlay">
-                        <p className="film-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
-                        <p className="film-title">{item.tenPhim}</p>
-                        <p className="film-star"><i className="fa fa-star"></i> <span>{item.danhGia}/</span>10</p>
+                <div className="scmovie-list-item" key={index}>
+                    <div className="scmovie-list-content">
+                        <a href="#">
+                            <img className="scmovie-list-image" src={item.hinhAnh} alt={item.tenPhim} />
+                        </a>
+                        <div className="scmovie-list-overlay">
+                            <p className="scmovie-list-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
+                            <p className="scmovie-list-title">{item.tenPhim}</p>
+                            <p className="scmovie-list-star"><i className="fa fa-star"></i> <span>{item.danhGia}/</span>10</p>
+                        </div>
                     </div>
                 </div>
             )
@@ -70,11 +71,9 @@ const ShowMovie = (props) => {
         return <CircularProgress />;
     }
     return (
-        <div data-aos="fade-up" data-aos-duration="600" className="show-movie" >
-            <Slider {...settings} className="my-movie">
-                {renderHtml()}
-            </Slider>
-        </div>
+        <Slider {...settings} className="my-movie">
+            {renderHtml()}
+        </Slider>
     )
 }
 

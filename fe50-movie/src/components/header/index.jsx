@@ -18,31 +18,35 @@ class Header extends Component {
         return (
             <div className="header-container">
                 <div className="header-logo"><NavLink className="" to='/'><img className="header-logo-img" src={logo} alt="" /></NavLink></div>
-                <ul className="header-menu header-menu-left">
-                    <li className="header-menu-item">
-                        <NavLink exact activeClassName={'active'} to='/' className="header-menu-link">Trang chủ</NavLink>
-                    </li>
-                    <li className="header-menu-item">
-                        <NavLink className="header-menu-link" to='/phim'>Phim<i className="fa fa-angle-down" aria-hidden="true"></i>
-                        </NavLink>
-                        <ul className="header-menu-dropdown">
-                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-dang-chieu'>Phim đang chiếu</NavLink></li>
-                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-sap-chieu'>Phim sắp chiếu</NavLink></li>
-                        </ul>
-                    </li>
-                    <li className="header-menu-item">
-                        <NavLink className="header-menu-link" to='/tin-tuc'>Tin tức<i className="fa fa-angle-down" aria-hidden="true"></i></NavLink>
-                        <ul className="header-menu-dropdown">
-                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/goc-dien-anh'>Góc điện ảnh</NavLink></li>
-                            <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/su-kien'>Sự kiện</NavLink></li>
-                        </ul>
-                    </li>
-                    <li className="header-menu-item">
-                        <NavLink className="header-menu-link" to='/ho-tro'>Hỗ trợ</NavLink>
-                    </li>
+                <div className="header-bar">
+                    <i className="fa fa-bars"></i>
+                </div>
+                <div className="header-menu">
+                    <ul className="header-menu-left">
+                        <li className="header-menu-item">
+                            <NavLink exact activeClassName={'active'} to='/' className="header-menu-link">Trang chủ</NavLink>
+                        </li>
+                        <li className="header-menu-item">
+                            <NavLink className="header-menu-link" to='/phim'>Phim<i className="fa fa-angle-down" aria-hidden="true"></i>
+                            </NavLink>
+                            <ul className="header-menu-dropdown">
+                                <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-dang-chieu'>Phim đang chiếu</NavLink></li>
+                                <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-sap-chieu'>Phim sắp chiếu</NavLink></li>
+                            </ul>
+                        </li>
+                        <li className="header-menu-item">
+                            <NavLink className="header-menu-link" to='/tin-tuc'>Tin tức<i className="fa fa-angle-down" aria-hidden="true"></i></NavLink>
+                            <ul className="header-menu-dropdown">
+                                <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/goc-dien-anh'>Góc điện ảnh</NavLink></li>
+                                <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/su-kien'>Sự kiện</NavLink></li>
+                            </ul>
+                        </li>
+                        <li className="header-menu-item">
+                            <NavLink className="header-menu-link" to='/ho-tro'>Hỗ trợ</NavLink>
+                        </li>
 
-                </ul>
-                <ul className="header-menu header-menu-right">
+                    </ul>
+                    <ul className="header-menu-right">
                     {
                         this.props.credentials ?
                             <li style={{ display: 'flex' }} className="header-menu-item">
@@ -60,6 +64,7 @@ class Header extends Component {
                             </>
                     }
                 </ul>
+                </div>
                 <div className="header-search">
                     <select className="header-search-select">
                         <option value="united">TV show</option>

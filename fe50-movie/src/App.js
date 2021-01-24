@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './App.css';
+import './App.scss';
 import { useDispatch } from "react-redux";
 import Home from './Screen/Home';
 import SignupScreen from './Screen/Signup';

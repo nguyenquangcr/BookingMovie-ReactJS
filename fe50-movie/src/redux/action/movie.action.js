@@ -6,7 +6,7 @@ export function getMovieListRequest() {
     dispatch(startLoading());
     // call api
     Axios.get(
-      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01"
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP05"
     )
       .then((res) => {
         dispatch(getMovieListSuccess(res.data));
