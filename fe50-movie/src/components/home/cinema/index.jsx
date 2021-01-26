@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
 import { actionDetailLocation, actionGetListMovieByLocation, getBookingRequest } from '../../../redux/action/cinema.action';
 import './cinema.scss';
@@ -15,10 +16,9 @@ const Cinema = (props) => {
         return listCumRap && listCumRap.map((item, index) => {
             if (item.maCumRap === maCumRapLocation) {
                 return item.danhSachPhim.map((product, index) => {
-                    console.log(product.thoiLuong);
                     return (
                         <div className="mvschedule-movielist-item" key={index}>
-                            <div className="mvschedule-movielist-content">
+                            <Link to={`/detail/${product.maPhim}`}  className="mvschedule-movielist-content">
                                 <div className="mvschedule-movielist-image">
                                     <img src={product.hinhAnh} alt={product.tenPhim} />
                                 </div>
@@ -26,7 +26,7 @@ const Cinema = (props) => {
                                     <div className="mvschedule-movielist-title">{product.tenPhim}</div>
                                     <div className="mvschedule-movielist-desc">Thời lượng: <span>120 phút</span></div>
                                 </div>
-                            </div>
+                            </Link>
                             <div className="mvschedule-movielist-showtimes">{
                                 product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
                                     return (

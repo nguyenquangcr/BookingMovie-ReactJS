@@ -8,6 +8,7 @@ import Header from './components/header';
 import SigninScreen from './Screen/Signin';
 import Booking from './Screen/Booking';
 import SlickHeader from './components/slider';
+import Detail from './Screen/Detail';
 
 
 
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/booking/:maLichChieu">
           <Booking />
+        </Route>
+        <Route path="/detail/:maPhim">
+          <Detail />
         </Route>
       </Switch>
     </BrowserRouter>
