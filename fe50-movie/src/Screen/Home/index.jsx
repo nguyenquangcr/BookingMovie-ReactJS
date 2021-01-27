@@ -26,30 +26,13 @@ const Home = () => {
         return screenSize;
     }
     const [width] = useMediaQuery();
-    return width >= 992 ? (
+    return  (
         <>
             <div className="header">
                     <Header />
                 <div className="container">
                     <SlickHeader />                    
-                    <TicketBooking />
-                </div>
-            </div>
-            <div className="section-container">
-                <HomeMovie />
-
-                <Cinema />
-
-            </div>
-
-            <Footer />
-        </>
-    ) : (
-        <>
-            <div className="header">
-                    <Header />
-                <div className="container">
-                    <SlickHeader />
+                    {width >= 992 ? <TicketBooking /> : null}
                 </div>
             </div>
             <div className="section-container">

@@ -3,24 +3,24 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   // key : value
   chuaDat: {
-    backgroundColor: "red",
-    "&:hover": {
-      backgroundColor: "red",
-    },
+    // backgroundColor: "red",
+    // "&:hover": {
+    //   backgroundColor: "red",
+    // },
   },
 
   daDat: {
-    backgroundColor: "blue",
-    "&:hover": {
-      backgroundColor: "blue",
-    },
+    // backgroundColor: "blue",
+    // "&:hover": {
+    //   backgroundColor: "blue",
+    // },
   },
 
   dangChon: {
-    backgroundColor: "yellow",
-    "&:hover": {
-      backgroundColor: "yellow",
-    },
+    // backgroundColor: "yellow",
+    // "&:hover": {
+    //   backgroundColor: "yellow",
+    // },
   },
 }));
 

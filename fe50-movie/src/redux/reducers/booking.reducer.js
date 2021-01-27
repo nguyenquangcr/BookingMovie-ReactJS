@@ -1,5 +1,6 @@
 const initialState = {
     danhSachGhe: [],
+    thongTinPhim: [],
   };
   
   function bookingReducer(state = initialState, actions) {
@@ -7,6 +8,9 @@ const initialState = {
     switch (type) {
       case "GET_BOOKING_SUCCESS": {
         return { ...state, danhSachGhe: payload.danhSachGhe };
+      }
+      case "GET_INFO_BOOKING_SUCCESS": {
+        return { ...state, thongTinPhim: payload.thongTinPhim };
       }
       case "CHON_GHE": {
         const index = state.danhSachGhe.findIndex(
