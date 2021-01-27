@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { NotificationContainer, NotificationManager } from "react-notifications"
 import { useDispatch, useSelector } from 'react-redux';
+import './comment.scss'
 
 const DanhGia = () => {
     const dispatch = useDispatch();
@@ -9,24 +10,23 @@ const DanhGia = () => {
     const [rate, setRate] = useState(0)
 
     const renderStar = (star) => {
-        let div =[];
-        let i = 0
-        while (i < star) {
-            i++;
-            div.push(<i class="fa fa-star-o" aria-hidden="true"></i>);
+        let items = [];
+        console.log(star);
+        for (let i = 0; i < 5; i++) {
+            if (i < star) items.push(<i class="fa fa-star active" aria-hidden="true"></i>);
+            else items.push(<i class="fa fa-star" aria-hidden="true"></i>);
         }
-        return div.map(item=>{
-            return(<span>{item}</span>)
+        return items.map(item=>{
+            return(<>{item}</>)
         });
     }
     const renderCommentUser = () => {
         return userComment && userComment.map((item)=>{
             return(
-                <div>
-                    <div>{item.user}</div>
-                    {renderStar(item.star)}
-                    <div>{item.comment}</div>
-                </div>
+                <>
+                    <div className="comment-list-title">{item.user} <span className="comment-list-star">{renderStar(item.star)}</span></div>
+                    <div className="comment-list-content">{item.comment}</div>
+                </>
             )
         }) 
     }
@@ -42,7 +42,7 @@ const DanhGia = () => {
             }
 
             return(
-                <span key={item.id} style={{color: isActive ? 'yellow' : null}} onClick={()=>onClickStar(index)}><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                <i key={item.id} className={isActive ? 'fa fa-star active' : 'fa fa-star'} onClick={()=>onClickStar(index)} aria-hidden="true"></i>
             )
         })
     }
@@ -61,35 +61,21 @@ const DanhGia = () => {
     }
 
         return (
-            <div>
-                <div data-toggle="modal" data-target="#myModal">Commen Cảm xuc</div>
-
-                <div id="myModal" className="modal fade" role="dialog">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div style={{marginBottom:'2%',borderBottom:'none'}} className="modal-header">
-                                <div>
-                                    {renderStarComment()}
-                                </div>
-                                <button type="button" className="close btn-close" data-dismiss="modal">×</button>
-                            </div>
-                            <div className="modal-body">
-                                <input type='textarea' className='danh-gia-phim' placeholder="Comment cảm xúc về phim đi nào :)"></input>
-                            </div>
-                            <div className="modal-footer">
-                                <button className='dang-binhluan' 
-                                onClick={()=>onClickPostComment()}
-                                variant="contained" color="primary" 
-                                style={{ outline: "none" }} 
-                                type="submit">Đăng</button>
-                            </div>
-                        </div>
+            <div className="comment">
+                <div className="comment-textarea">
+                    <textarea rows="4" className="comment-input" placeholder="Nhập nội dung bình luận"></textarea>
+                </div>
+                <div className="comment-rating">
+                    <div>Đánh giá: {renderStarComment()}</div>
+                    <div>
+                        <button className="comment-button" onClick={()=>onClickPostComment()} variant="contained" color="primary" type="submit">Bình luận</button>
                     </div>
                 </div>
-
-                <div>
+                <div className="comment-list">
+                    <h3 className="heading-left">Danh sách bình luận</h3>
                     {renderCommentUser()}
                 </div>
+                
             </div>
         )
 }

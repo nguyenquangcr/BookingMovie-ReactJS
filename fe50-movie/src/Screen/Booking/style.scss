@@ -35,23 +35,8 @@
             }
         }
     }
-    &-type {
-        &-item {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            color: #abb7c4;
-            span {
-                border-radius: 5px;
-                min-width: 35px;
-                min-height: 16px;
-                margin-right: 8px;
-                display: inline-block;
-            }
-        }
-    }
-    &-seat,
-    &-type {
+
+    &-seat {
         &-normal {
             span {
                 background-color: var(--colorThird);
@@ -73,6 +58,36 @@
                 background-color: var(--colorBooked);
                 pointer-events: none;
             }
+        }
+    }
+    &-type {
+        &-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            color: #abb7c4;
+            span {
+                border-radius: 5px;
+                min-width: 35px;
+                min-height: 16px;
+                margin-right: 8px;
+                display: inline-block;
+            }
+        }
+    }
+    &-type {
+        &-normal {
+            background-color: var(--colorThird);
+        }
+        &-vip {
+            background-color: var(--colorSecondary);
+            color: var(--colorPrimary);
+        }
+        &-selected {
+            background-color: var(--colorSelected);
+        }
+        &-booked {
+            background-color: var(--colorBooked);
         }
     }
     &-info {

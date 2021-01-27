@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import Home from './Screen/Home';
 import SignupScreen from './Screen/Signup';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/header';
 import SigninScreen from './Screen/Signin';
 import Booking from './Screen/Booking';
-import SlickHeader from './components/slider';
 import Detail from './Screen/Detail';
 
 

@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import './booking.scss'
 
 const DatVe = (props) => {
 
@@ -77,8 +78,8 @@ const DatVe = (props) => {
     }
 
     return (
-        <div>
-            <h1>Đặt Vé</h1>
+        <div className="booking">
+            <h3 className="heading-left">Danh sách lịch chiếu</h3>
             <div className='row'>
                 <div className='col-3'>{renderSystem()}</div>
                 <div className='col-3'>{renderLocation()}</div>

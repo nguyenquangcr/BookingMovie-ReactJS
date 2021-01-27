@@ -65,3 +65,21 @@ img {
     }
   }
 }
+.heading {
+  &-left {
+    color: #abb7c4;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    position: relative;
+    &::before {
+        background-color: var(--colorThird);
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 80px;
+        border-radius: 3px;
+    }
+  }
+}
