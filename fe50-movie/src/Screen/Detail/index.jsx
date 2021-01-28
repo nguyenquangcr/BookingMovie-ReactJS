@@ -14,7 +14,10 @@ const Detail = () => {
     const dispatch = useDispatch();
     const detailMovie = useSelector((state) => state.detail.detailMovie);
     useEffect(() => {
-        dispatch(getDetailMovie(param.maPhim))
+        const str = param.maPhim;
+        const id = str.substring(str.lastIndexOf("-") + 1, str.length);
+        console.log(param, str, id);
+        dispatch(getDetailMovie(id))
     }, [])
     return (
         <div>
@@ -36,7 +39,7 @@ const Detail = () => {
                                             <i className="fa fa-star"></i>
                                             <div className="detail-rating-index">
                                                 <span>4.1</span> /5<br />
-                                                <label class="detail-rating-rv">56 Reviews</label>
+                                                <label className="detail-rating-rv">56 Reviews</label>
                                             </div>
                                         </div>
                                         <div className="detail-rating-right">

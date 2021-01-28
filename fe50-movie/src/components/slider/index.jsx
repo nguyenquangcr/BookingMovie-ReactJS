@@ -55,7 +55,7 @@ const SlickHeader = () => {
     const rederSlider = () => {
         return movieSoon && movieSoon.map((item, index) => {
             return (
-                <Link to={`/commingsoon/${item.biDanh}/${item.maPhim}`} className="banner-slider-item" key={index}>
+                <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="banner-slider-item" key={index}>
                     <a href="#">
                         <img className="banner-slider-image" src={item.hinhAnh} alt="" />
                         <div className="banner-slider-overlay">

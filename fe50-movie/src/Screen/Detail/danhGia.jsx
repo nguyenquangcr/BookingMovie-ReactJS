@@ -14,8 +14,8 @@ const DanhGia = () => {
         let items = [];
         console.log(star);
         for (let i = 0; i < 5; i++) {
-            if (i < star) items.push(<i class="fa fa-star active" aria-hidden="true"></i>);
-            else items.push(<i class="fa fa-star" aria-hidden="true"></i>);
+            if (i < star) items.push(<i className="fa fa-star active" aria-hidden="true"></i>);
+            else items.push(<i className="fa fa-star" aria-hidden="true"></i>);
         }
         return items.map(item => {
             return (<>{item}</>)

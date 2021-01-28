@@ -48,12 +48,12 @@ function App() {
         <Route path="/booking/:maLichChieu">
           <Booking />
         </Route>
-        <Route path="/movie/:tenPhim/:maPhim">
+        <Route path="/movie/:tenPhim:maPhim">
           <Detail />
         </Route>
-        <Route path="/commingsoon/:tenPhim/:maPhim">
+        {/* <Route path="/movie/:tenPhim:maPhim">
           <Detailmoviesoon />
-        </Route>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );

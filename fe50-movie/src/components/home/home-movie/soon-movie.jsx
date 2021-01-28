@@ -13,7 +13,7 @@ const SoonMovie = (props) => {
     const renderHtml = () => {
         return props.listSoonMovie && props.listSoonMovie.map((item, index) => {
             return (
-                <Link to={`/commingsoon/${item.biDanh}/${item.maPhim}`} className="scmovie-list-item" key={index}>
+                <Link to={`/commingsoon/${item.biDanh}-${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">
                         <a href="#">
                             <img className="scmovie-list-image" src={item.hinhAnh} alt={item.tenPhim} />

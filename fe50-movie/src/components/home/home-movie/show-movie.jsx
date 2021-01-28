@@ -18,7 +18,7 @@ const ShowMovie = (props) => {
         return props.movieList && props.movieList.map((item, index) => {
             console.log('item', item);
             return (
-                <Link to={`/movie/${item.biDanh}/${item.maPhim}`} className="scmovie-list-item" key={index}>
+                <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">
                         <a href="#">
                             <img className="scmovie-list-image" src={item.hinhAnh} alt={item.tenPhim} />
