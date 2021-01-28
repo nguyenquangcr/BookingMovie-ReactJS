@@ -1,5 +1,5 @@
-import React,{useEffect,useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDetailMovie } from '../../redux/action/detail.action';
 import Header from '.././../components/header/index';
@@ -13,7 +13,6 @@ const Detail = () => {
     const param = useParams();
     const dispatch = useDispatch();
     const detailMovie = useSelector((state) => state.detail.detailMovie);
-    console.log('detailMovie',detailMovie);
     useEffect(() => {
         dispatch(getDetailMovie(param.maPhim))
     }, [])
@@ -54,7 +53,7 @@ const Detail = () => {
                                             <i className="fa fa-opencart"></i> Đặt vé
                                         </div>
                                         <div className="detail-action-item">
-                                        <i className="fa fa-heart"></i> Yêu thích
+                                            <i className="fa fa-heart"></i> Yêu thích
                                         </div>
                                         <div className="detail-action-item">
                                             <i className="fa fa-share-alt"></i> Chia sẻ
@@ -71,10 +70,10 @@ const Detail = () => {
                                 <div className="col-12">
                                     <div className="detail-desc">
                                         <h3 className="heading-left">Nội dung phim</h3>
-                                        <div className="detail-desc-content" dangerouslySetInnerHTML={{__html: detailMovie.moTa}}></div>
+                                        <div className="detail-desc-content" dangerouslySetInnerHTML={{ __html: detailMovie.moTa }}></div>
                                     </div>
                                     <div className="detail-system">
-                                        <DatVe Detail = {detailMovie.heThongRapChieu} />
+                                        <DatVe Detail={detailMovie.heThongRapChieu} />
                                     </div>
                                     <DanhGia />
                                 </div>

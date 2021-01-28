@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SigninScreen from './Screen/Signin';
 import Booking from './Screen/Booking';
 import Detail from './Screen/Detail';
+import { getMovieSoon } from './redux/action/moviesoon.action';
+import Detailmoviesoon from './Screen/DetailMovieSoon';
 
 
 
@@ -14,6 +16,13 @@ import Detail from './Screen/Detail';
 function App() {
   const credentialStr = localStorage.getItem("credentials");
   const dispatch = useDispatch();
+
+  const _getMovieSoon = () => {
+    dispatch(
+      getMovieSoon()
+    )
+  }
+
   const _getCredentialFromLocal = () => {
     if (credentialStr) {
       dispatch(
@@ -25,6 +34,7 @@ function App() {
     }
   }
   useEffect(() => {
+    _getMovieSoon()
     _getCredentialFromLocal()
   }, [])
 
@@ -38,8 +48,11 @@ function App() {
         <Route path="/booking/:maLichChieu">
           <Booking />
         </Route>
-        <Route path="/detail/:maPhim">
+        <Route path="/movie/:tenPhim/:maPhim">
           <Detail />
+        </Route>
+        <Route path="/commingsoon/:tenPhim/:maPhim">
+          <Detailmoviesoon />
         </Route>
       </Switch>
     </BrowserRouter>

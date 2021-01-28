@@ -7,12 +7,13 @@ import "slick-carousel/slick/slick-theme.css";
 
 import AOS from "aos"
 import "aos/dist/aos.css"
+import { Link } from 'react-router-dom';
 
 const SoonMovie = (props) => {
     const renderHtml = () => {
         return props.listSoonMovie && props.listSoonMovie.map((item, index) => {
             return (
-                <div className="scmovie-list-item" key={index}>
+                <Link to={`/commingsoon/${item.biDanh}/${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">
                         <a href="#">
                             <img className="scmovie-list-image" src={item.hinhAnh} alt={item.tenPhim} />
@@ -23,7 +24,7 @@ const SoonMovie = (props) => {
                             <p className="scmovie-list-star"><i className="fa fa-star"></i> <span>{item.danhGia}/</span>10</p>
                         </div>
                     </div>
-                </div>
+                </Link>
             )
         })
     }
