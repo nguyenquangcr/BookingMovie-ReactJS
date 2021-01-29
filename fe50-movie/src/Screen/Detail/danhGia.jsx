@@ -63,7 +63,7 @@ const DanhGia = () => {
         setComment(e.target.value)
     }
     return (
-        <div id="share" className="comment">
+        <div id="comment" className="comment">
             <div className="comment-textarea">
                 <textarea value={comment} onChange={e => oncChangeText(e)} rows="4" className="comment-input" placeholder="Nhập nội dung bình luận"></textarea>
             </div>

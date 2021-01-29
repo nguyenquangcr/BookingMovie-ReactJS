@@ -18,7 +18,7 @@ const Footer = () => {
                             <p>Here you can use rows and columns to organize your footer content.</p>
                             <p>5th Avenue st, manhattan</p>
                             <p> New York, NY 10001</p>
-                            <p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+                            <p>Call us: <a href="tel:0968142475">(+84) 968 142 475</a></p>
                         </div>
                         <div className="col-md-2 mb-md-0 mb-3">
                             <h4 className="text-uppercase">Resources</h4>

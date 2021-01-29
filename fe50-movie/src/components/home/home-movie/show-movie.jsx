@@ -19,9 +19,9 @@ const ShowMovie = (props) => {
             return (
                 <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">
-                        <a href="#">
-                            <img className="scmovie-list-image" src={item.hinhAnh} alt={item.tenPhim} />
-                        </a>
+                        <div className="scmovie-list-image">
+                            <img src={item.hinhAnh} alt={item.tenPhim} />
+                        </div>
                         <div className="scmovie-list-overlay">
                             <p className="scmovie-list-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
                             <p className="scmovie-list-title">{item.tenPhim}</p>

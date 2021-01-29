@@ -7,6 +7,8 @@ import Header from '.././../components/header/index';
 import Footer from '../../components/footer/index';
 import DatVe from './datVe';
 import DanhGia from './danhGia';
+import ShowMovie from './show-movie';
+import SoonMovie from './soon-movie';
 import './style.scss';
 
 const Detail = () => {
@@ -71,7 +73,7 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className="detail-action">
-                                        <Link
+                                        {movieSoon ? <Link
                                             activeClass="active"
                                             to="booking"
                                             spy={true}
@@ -81,15 +83,17 @@ const Detail = () => {
                                             className="detail-action-item">
                                             <i className="fa fa-opencart"></i> Đặt vé
                                         </Link>
+                                        : null
+                                        }
                                         <Link
                                             className="detail-action-item"
                                             activeClass="active"
-                                            to="share"
+                                            to="comment"
                                             spy={true}
                                             smooth={true}
                                             offset={-50}
                                             duration={500}>
-                                            <i className="fa fa-heart"></i> Yêu thích
+                                            <i className="fa fa-comment"></i> Bình luận
                                         </Link>
                                         <div className="detail-action-item">
                                             <i className="fa fa-share-alt"></i> Chia sẻ
@@ -108,22 +112,26 @@ const Detail = () => {
                                         <h3 className="heading-left">Nội dung phim</h3>
                                         <div className="detail-desc-content" dangerouslySetInnerHTML={{ __html: detailMovie.moTa }}></div>
                                     </div>
-                                    <div className={movieSoon ? 'active' : ''}>
-                                        <div className="detail-system">
-                                            <DatVe Detail={detailMovie.heThongRapChieu} />
-                                        </div>
-                                        <DanhGia />
-                                    </div>
+                                    {
+                                        movieSoon ? 
+                                        <>
+                                            <div className="detail-system">
+                                                <DatVe Detail={detailMovie.heThongRapChieu} />
+                                            </div>
+                                        </> : null
+                                    }
+                                    <DanhGia />
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-lg-3">
-                            block bên phải, a cần đổ 2 dữ liệu lên này, chú đổ dữ liệu cho a nhé
                             <div>
-                                phim sắp chiếu, cho vào đây
+                                <h3 className="heading-left">Phim đang chiếu</h3>
+                                <ShowMovie />
                             </div>
                             <div>
-                                phim đang chiếu, cho vào đây
+                                <h3 className="heading-left">Phim sắp chiếu</h3>
+                                <SoonMovie />
                             </div>
                         </div>
                     </div>

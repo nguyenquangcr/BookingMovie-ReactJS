@@ -66,6 +66,7 @@
             color: var(--colorThird)!important;
             font-weight: 600;
             text-transform: uppercase;
+            cursor: pointer;
             i {
                 border: 1px solid var(--colorThird);
                 text-align: center;
@@ -93,8 +94,4 @@
         margin-top: 50px;
         color: #abb7c4;
     }
-}
-
-.active{
-    display: none;
 }

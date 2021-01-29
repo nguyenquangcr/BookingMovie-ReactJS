@@ -6,11 +6,6 @@ import Slider from 'react-slick';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import slider1 from '../../assets/image/slider1.jpg';
-import slider2 from '../../assets/image/slider2.jpg';
-import slider3 from '../../assets/image/slider3.jpg';
-import slider4 from '../../assets/image/slider4.jpg';
 import { Link } from 'react-router-dom';
 
 const SlickHeader = () => {
@@ -56,8 +51,10 @@ const SlickHeader = () => {
         return movieSoon && movieSoon.map((item, index) => {
             return (
                 <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="banner-slider-item" key={index}>
-                    <a href="#">
-                        <img className="banner-slider-image" src={item.hinhAnh} alt="" />
+                    <div className="banner-slider-content">
+                        <div className="banner-slider-image">
+                            <img src={item.hinhAnh} alt={item.tenPhim} />
+                        </div>
                         <div className="banner-slider-overlay">
                             <div className="banner-slider-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</div>
                             <div className="banner-slider-title">
@@ -65,9 +62,9 @@ const SlickHeader = () => {
                             </div>
                             <div className="banner-slider-star">
                                 <i className="fa fa-star"></i> <span>{item.danhGia}/</span>10
+                            </div>
                         </div>
-                        </div>
-                    </a>
+                    </div>
                 </Link>
             )
         })
