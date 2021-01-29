@@ -8,7 +8,6 @@ import SigninScreen from './Screen/Signin';
 import Booking from './Screen/Booking';
 import Detail from './Screen/Detail';
 import { getMovieSoon } from './redux/action/moviesoon.action';
-import Detailmoviesoon from './Screen/DetailMovieSoon';
 
 
 
@@ -51,9 +50,6 @@ function App() {
         <Route path="/movie/:tenPhim:maPhim">
           <Detail />
         </Route>
-        {/* <Route path="/movie/:tenPhim:maPhim">
-          <Detailmoviesoon />
-        </Route> */}
       </Switch>
     </BrowserRouter>
   );
