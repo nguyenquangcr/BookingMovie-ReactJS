@@ -12,22 +12,21 @@ import SoonMovie from './soon-movie';
 import './style.scss';
 
 const Detail = () => {
+    // const [title, setTitle] = useState('');
     const [movieSoon, setMovieSoon] = useState('');
     const param = useParams();
     const dispatch = useDispatch();
     const detailMovie = useSelector((state) => state.detail.detailMovie);
     const maPhimCommingSoon = useSelector((state) => state.detail.maPhimCommingSoon);
 
-    const listMovie = useSelector((state) => state.movie.movieList);
-    const listSoonMovie = useSelector((state) => state.movie.listSoonMovie);
-
-    console.log('listMovie', listMovie);
-    console.log('listSoonMovie', listSoonMovie);
     useEffect(() => {
         const str = param.maPhim;
         const id = str.substring(str.lastIndexOf("-") + 1, str.length);
         dispatch(getDetailMovie(id))
     }, [])
+    useEffect(() => {
+        document.title = detailMovie.tenPhim;
+    }, [detailMovie])
 
     // kiem tra phim co phai coomingsoon khong
     useEffect(() => {
@@ -73,7 +72,7 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className="detail-action">
-                                        {movieSoon ? <Link
+                                        {!movieSoon ? <Link
                                             activeClass="active"
                                             to="booking"
                                             spy={true}
@@ -113,7 +112,7 @@ const Detail = () => {
                                         <div className="detail-desc-content" dangerouslySetInnerHTML={{ __html: detailMovie.moTa }}></div>
                                     </div>
                                     {
-                                        movieSoon ? 
+                                        !movieSoon ? 
                                         <>
                                             <div className="detail-system">
                                                 <DatVe Detail={detailMovie.heThongRapChieu} />
