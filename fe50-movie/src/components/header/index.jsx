@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/image/logo1.png'
 import './style.scss';
+import SigninScreen from '../../Screen/Signin'
+import SignupScreen from '../../Screen/Signup';
 
 class Header extends Component {
 
@@ -23,6 +25,14 @@ class Header extends Component {
         const handleHeaderMenuDropdown = (e) => {
             e.preventDefault();
             e.target.parentNode.nextElementSibling.classList.toggle('active');
+        }
+        
+        const handleShowPopupSignin = () => {
+            document.querySelector('[rel="js-header-signin"]').classList.add('active');
+        }
+        
+        const handleShowPopupSignup = () => {
+            document.querySelector('[rel="js-header-signup"]').classList.add('active');
         }
 
         return (
@@ -72,10 +82,11 @@ class Header extends Component {
                                     :
                                     <>
                                         <li className="header-menu-item">
-                                            <NavLink className="header-menu-link" to="/dangky">Đăng Ký</NavLink>
+                                            {/* <NavLink className="header-menu-link" to="/dangky"></NavLink> */}
+                                            <span className="header-menu-link header-menu-signup" onClick={() => handleShowPopupSignup()}>Đăng Ký</span>
                                         </li>
                                         <li className="header-menu-item">
-                                            <NavLink className="header-menu-link header-menu-link-login" to="/dangnhap">Đăng Nhập</NavLink>
+                                            <span className="header-menu-link header-menu-signin" onClick={() => handleShowPopupSignin()}>Đăng Nhập</span>
                                         </li>
                                     </>
                             }
@@ -98,6 +109,8 @@ class Header extends Component {
                     </div>
                     </div>
                 </div>
+                <SigninScreen />
+                <SignupScreen />
             </div>
         )
     }

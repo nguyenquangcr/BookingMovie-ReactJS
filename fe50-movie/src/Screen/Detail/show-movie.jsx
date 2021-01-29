@@ -13,17 +13,23 @@ const ShowMovie = (props) => {
 
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
-            return (
-                <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="detail-scmovie-item" key={index}>
-                    <div className="detail-scmovie-image">
-                        <img src={item.hinhAnh} alt={item.tenPhim} />
+            if (index < 5) {
+                return (
+                    <div className="detail-scmovie-item" key={index}>
+                        <div className="detail-scmovie-image">
+                            <Link to={`/commingsoon/${item.biDanh}-${item.maPhim}`}>
+                                <img src={item.hinhAnh} alt={item.tenPhim} />
+                            </Link>
+                        </div>
+                        <div className="detail-scmovie-content">
+                            <Link to={`/commingsoon/${item.biDanh}-${item.maPhim}`} className="detail-scmovie-title">
+                                {item.tenPhim}
+                            </Link>
+                            <div className="detail-scmovie-desc" dangerouslySetInnerHTML={{ __html: item.moTa }}></div>
+                        </div>
                     </div>
-                    <div className="detail-scmovie-content">
-                        <p className="detail-scmovie-title">{item.tenPhim}</p>
-                        <p className="detail-scmovie-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</p>
-                    </div>
-                </Link>
-            )
+                )
+            }
         })
     }
     const { isLoading } = props;

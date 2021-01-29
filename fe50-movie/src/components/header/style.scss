@@ -50,11 +50,23 @@
                 i {
                     margin-left: 4px;
                 }
-                &-login {
-                    background-color: var(--colorThird);
+            }
+            &-signup {
+                font-weight: 600;
+                cursor: pointer;
+                &:hover {
+                    color: var(--colorThird);
+                }
+            }
+            &-signin {
+                background-color: var(--colorThird);
+                color: #fff;
+                font-weight: 600;
+                border-radius: 20px;
+                padding: 9px 25px;
+                cursor: pointer;
+                &:hover {
                     color: #fff;
-                    border-radius: 20px;
-                    padding: 9px 25px;
                 }
             }
             &-dropdown {

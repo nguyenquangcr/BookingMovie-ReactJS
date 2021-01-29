@@ -72,6 +72,9 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className="detail-action">
+                                        <div className="detail-action-item">
+                                            <i className="fa fa-film"></i> Trailer
+                                        </div>
                                         {!movieSoon ? <Link
                                             activeClass="active"
                                             to="booking"
@@ -94,9 +97,6 @@ const Detail = () => {
                                             duration={500}>
                                             <i className="fa fa-comment"></i> Bình luận
                                         </Link>
-                                        <div className="detail-action-item">
-                                            <i className="fa fa-share-alt"></i> Chia sẻ
-                                        </div>
                                     </div>
                                     <div className="detail-info">
                                         <li>Đạo diễn: <span>Mez Tharaton</span></li>
@@ -124,11 +124,11 @@ const Detail = () => {
                             </div>
                         </div>
                         <div className="col-12 col-lg-3">
-                            <div>
+                            <div className="detail-scmovie">
                                 <h3 className="heading-left">Phim đang chiếu</h3>
                                 <ShowMovie />
                             </div>
-                            <div>
+                            <div className="detail-scmovie">
                                 <h3 className="heading-left">Phim sắp chiếu</h3>
                                 <SoonMovie />
                             </div>

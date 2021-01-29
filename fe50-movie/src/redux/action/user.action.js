@@ -8,12 +8,15 @@ export const login = (user,history) =>{
             if(res.data.maLoaiNguoiDung === "KhachHang"){
                 dispatch(loginUser(res.data));
                 localStorage.setItem('credentials',JSON.stringify(res.data))
-                history.push("/");
+                //history.push("/");
+                document.querySelector('[rel="js-header-login"]').classList.remove('active');
             }else{
-                alert('Vui lòng nhập tài khoản khách hàng')
+                // alert('Vui lòng nhập tài khoản khách hàng!');
+                alert('Sai tên đăng nhập/mật khẩu! Vui lòng thử lại!');
             }
         })
         .catch(err =>{
+            alert('Sai tên đăng nhập/mật khẩu! Vui lòng thử lại!');
             console.log(err);
         })
     }
