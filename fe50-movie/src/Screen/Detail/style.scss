@@ -63,7 +63,7 @@
         margin-bottom: 30px;
         &-item {
             margin-right: 25px;
-            color: var(--colorThird);
+            color: var(--colorThird)!important;
             font-weight: 600;
             text-transform: uppercase;
             i {
@@ -93,4 +93,8 @@
         margin-top: 50px;
         color: #abb7c4;
     }
+}
+
+.active{
+    display: none;
 }

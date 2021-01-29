@@ -1,4 +1,5 @@
 const initialState = {
+    maPhimCommingSoon:['5104','5125','5163','5178','5200','4666'],
     detailMovie: [],
     listStar: [
         {

@@ -18,7 +18,7 @@ const Cinema = (props) => {
                 return item.danhSachPhim.map((product, index) => {
                     return (
                         <div className="mvschedule-movielist-item" key={index}>
-                            <Link to={`/movie/${product.biDanh}/${product.maPhim}`} className="mvschedule-movielist-content">
+                            <Link to={`/movie/${product.biDanh}-${product.maPhim}`} className="mvschedule-movielist-content">
                                 <div className="mvschedule-movielist-image">
                                     <img src={product.hinhAnh} alt={product.tenPhim} />
                                 </div>

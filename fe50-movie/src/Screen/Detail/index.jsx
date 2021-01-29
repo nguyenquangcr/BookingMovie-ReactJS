@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Link, animateScroll as scroll } from 'react-scroll'
 import { getDetailMovie } from '../../redux/action/detail.action';
 import Header from '.././../components/header/index';
 import Footer from '../../components/footer/index';
@@ -9,16 +10,34 @@ import DanhGia from './danhGia';
 import './style.scss';
 
 const Detail = () => {
-
+    const [movieSoon, setMovieSoon] = useState('');
     const param = useParams();
     const dispatch = useDispatch();
     const detailMovie = useSelector((state) => state.detail.detailMovie);
+    const maPhimCommingSoon = useSelector((state) => state.detail.maPhimCommingSoon);
+
+    const listMovie = useSelector((state) => state.movie.movieList);
+    const listSoonMovie = useSelector((state) => state.movie.listSoonMovie);
+
+    console.log('listMovie', listMovie);
+    console.log('listSoonMovie', listSoonMovie);
     useEffect(() => {
         const str = param.maPhim;
         const id = str.substring(str.lastIndexOf("-") + 1, str.length);
-        console.log(param, str, id);
         dispatch(getDetailMovie(id))
     }, [])
+
+    // kiem tra phim co phai coomingsoon khong
+    useEffect(() => {
+        const str = param.maPhim;
+        const id = str.substring(str.lastIndexOf("-") + 1, str.length);
+        maPhimCommingSoon && maPhimCommingSoon.map(item => {
+            if (item === id) {
+                return setMovieSoon('active');
+            }
+        })
+    }, [])
+
     return (
         <div>
             <div className="header">
@@ -52,12 +71,26 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className="detail-action">
-                                        <div className="detail-action-item">
+                                        <Link
+                                            activeClass="active"
+                                            to="booking"
+                                            spy={true}
+                                            smooth={true}
+                                            offset={-50}
+                                            duration={500}
+                                            className="detail-action-item">
                                             <i className="fa fa-opencart"></i> Đặt vé
-                                        </div>
-                                        <div className="detail-action-item">
+                                        </Link>
+                                        <Link
+                                            className="detail-action-item"
+                                            activeClass="active"
+                                            to="share"
+                                            spy={true}
+                                            smooth={true}
+                                            offset={-50}
+                                            duration={500}>
                                             <i className="fa fa-heart"></i> Yêu thích
-                                        </div>
+                                        </Link>
                                         <div className="detail-action-item">
                                             <i className="fa fa-share-alt"></i> Chia sẻ
                                         </div>
@@ -75,10 +108,12 @@ const Detail = () => {
                                         <h3 className="heading-left">Nội dung phim</h3>
                                         <div className="detail-desc-content" dangerouslySetInnerHTML={{ __html: detailMovie.moTa }}></div>
                                     </div>
-                                    <div className="detail-system">
-                                        <DatVe Detail={detailMovie.heThongRapChieu} />
+                                    <div className={movieSoon ? 'active' : ''}>
+                                        <div className="detail-system">
+                                            <DatVe Detail={detailMovie.heThongRapChieu} />
+                                        </div>
+                                        <DanhGia />
                                     </div>
-                                    <DanhGia />
                                 </div>
                             </div>
                         </div>

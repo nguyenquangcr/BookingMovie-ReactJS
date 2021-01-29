@@ -12,7 +12,6 @@ const DanhGia = () => {
 
     const renderStar = (star) => {
         let items = [];
-        console.log(star);
         for (let i = 0; i < 5; i++) {
             if (i < star) items.push(<i className="fa fa-star active" aria-hidden="true"></i>);
             else items.push(<i className="fa fa-star" aria-hidden="true"></i>);
@@ -64,7 +63,7 @@ const DanhGia = () => {
         setComment(e.target.value)
     }
     return (
-        <div className="comment">
+        <div id="share" className="comment">
             <div className="comment-textarea">
                 <textarea value={comment} onChange={e => oncChangeText(e)} rows="4" className="comment-input" placeholder="Nhập nội dung bình luận"></textarea>
             </div>
@@ -78,7 +77,6 @@ const DanhGia = () => {
                 <h3 className="heading-left">Danh sách bình luận</h3>
                 {renderCommentUser()}
             </div>
-
         </div>
     )
 }

@@ -16,7 +16,6 @@ const ShowMovie = (props) => {
 
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
-            console.log('item', item);
             return (
                 <Link to={`/movie/${item.biDanh}-${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">
