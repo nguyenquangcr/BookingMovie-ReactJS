@@ -2,7 +2,8 @@ const initialState = {
     movieList: null,
     movieInfo: null,
     listDetailFilm: {},
-    listSoonMovie: []
+    listSoonMovie: [],
+    listMovieSearch:[]
   };
   
   const movieReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ const initialState = {
         const newMovieSoon = [...state.listSoonMovie];
         newMovieSoon.push(payload);
         return {...state, listSoonMovie:newMovieSoon}
+      }
+      case 'GET-SEARCH-FILM':{
+        return { ...state, listMovieSearch: payload };
+      }
+      case 'CLEAR-LIST-SEARCH-FILM':{
+        return {...state, listMovieSearch: []};
       }
       default:
         return state;

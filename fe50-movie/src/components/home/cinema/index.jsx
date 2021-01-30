@@ -15,53 +15,58 @@ const Cinema = (props) => {
     const renderMovieByLocation = () => {
         return listCumRap && listCumRap.map((item, index) => {
             if (item.maCumRap === maCumRapLocation) {
-                return item.danhSachPhim.map((product, index) => {
-                    console.log('product', product);
-                    let date = "";
-                    return (
-                        <div className="mvschedule-movielist-item" key={index}>
-                            <Link to={`/movie/${product.biDanh}-${product.maPhim}`} className="mvschedule-movielist-content">
-                                <div className="mvschedule-movielist-image">
-                                    <img src={product.hinhAnh} alt={product.tenPhim} />
-                                </div>
-                                <div>
-                                    <div className="mvschedule-movielist-title">{product.tenPhim}</div>
-                                    <div className="mvschedule-movielist-desc">Thời lượng: <span>120 phút</span></div>
-                                </div>
-                            </Link>
-                            {
-                                product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
-                                    if ((new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString()) !== date) {
-                                        date = new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString();
-                                        return (
-                                            <>
-                                                <div className="mvschedule-movielist-showtimes-date">
-                                                    {new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}
-                                                </div>
-                                                <div className="mvschedule-movielist-showtimes" key={index}>
-                                                    {
-                                                        product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
-                                                            if ((new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString()) === date) {
-                                                                return (
-                                                                    <Link to={`/booking/${xuatChieu.maLichChieu}`} className="mvschedule-movielist-showtimes-item" key={index}>
-                                                                        <div className="mvschedule-movielist-showtimes-content">
-                                                                            <span>{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { hour: '2-digit', })}:{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { minute: '2-digit' })}</span>
-                                                                            <label> ~ </label>{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { hour: '2-digit', })}:{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { minute: '2-digit' })}
-                                                                        </div>
-                                                                    </Link>
-                                                                )
-                                                            }
-                                                        })
-                                                    }
-                                                </div>
-                                            </>
-                                        )
-                                    }
-                                })
-                            }
-                        </div>
-                    )
-                })
+                return (
+                    <div key={index}>
+                        {
+                            item.danhSachPhim.map((product, indexA) => {
+                                let date = "";
+                                return (
+                                    <div className="mvschedule-movielist-item" key={indexA}>
+                                        <Link to={`/movie/${product.biDanh}-${product.maPhim}`} className="mvschedule-movielist-content">
+                                            <div className="mvschedule-movielist-image">
+                                                <img src={product.hinhAnh} alt={product.tenPhim} />
+                                            </div>
+                                            <div>
+                                                <div className="mvschedule-movielist-title">{product.tenPhim}</div>
+                                                <div className="mvschedule-movielist-desc">Thời lượng: <span>120 phút</span></div>
+                                            </div>
+                                        </Link>
+                                        {
+                                            product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
+                                                if ((new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString()) !== date) {
+                                                    date = new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString();
+                                                    return (
+                                                        <div  key={index}>
+                                                            <div className="mvschedule-movielist-showtimes-date">
+                                                                {new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}
+                                                            </div>
+                                                            <div className="mvschedule-movielist-showtimes">
+                                                                {
+                                                                    product.lstLichChieuTheoPhim.map((xuatChieu, index) => {
+                                                                        if ((new Date(xuatChieu.ngayChieuGioChieu).toLocaleDateString()) === date) {
+                                                                            return (
+                                                                                <Link to={`/booking/${xuatChieu.maLichChieu}`} className="mvschedule-movielist-showtimes-item" key={index}>
+                                                                                    <div className="mvschedule-movielist-showtimes-content">
+                                                                                        <span>{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { hour: '2-digit', })}:{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { minute: '2-digit' })}</span>
+                                                                                        <label> ~ </label>{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { hour: '2-digit', })}:{new Date(xuatChieu.ngayChieuGioChieu).toLocaleTimeString('vi-VN', { minute: '2-digit' })}
+                                                                                    </div>
+                                                                                </Link>
+                                                                            )
+                                                                        }
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                }
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                )
             }
         })
     }

@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { actGetListDetailFilm } from '../../../redux/action/movie.action';
 
 const TicketBooking = (props) => {
-    const [maPhim, setmaPhim] = useState('')
+    const [maPhim, setmaPhim] = useState()
 
     const [state, setState] = useState(
         {

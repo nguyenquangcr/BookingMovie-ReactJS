@@ -68,21 +68,49 @@ function getMovieDetailFailed(error) {
 export const actGetListDetailFilm = (id) => {
   return function (dispatch) {
     // call api
-    Axios.get(
-      `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
-    )
-      .then(function (res) {
-        dispatch(getListDetailHome(res.data))
-      })
-      .catch(function (err) {
-        //
-      });
+      if(id){
+        Axios.get(
+          `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+        )
+          .then(function (res) {
+            dispatch(getListDetailHome(res.data))
+          })
+          .catch(function (err) {
+            //
+          });
+      }
   };
 }
 
 function getListDetailHome(film) {
   return {
     type: "GET-LIST-DETAIL-HOME",
+    payload: film,
+  };
+}
+
+//search movie
+
+export const actSearchFilm = (keyWord) => {
+  return function (dispatch) {
+    // call api
+      if(keyWord){
+        Axios.get(
+          `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP05&tenPhim=${keyWord}&soTrang=1&soPhanTuTrenTrang=10000`
+        )
+          .then(function (res) {
+            dispatch(getListSearchFilm(res.data.items))
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+  };
+}
+
+function getListSearchFilm(film) {
+  return {
+    type: "GET-SEARCH-FILM",
     payload: film,
   };
 }
