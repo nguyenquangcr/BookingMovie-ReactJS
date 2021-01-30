@@ -9,7 +9,7 @@ export const login = (user,history) =>{
                 dispatch(loginUser(res.data));
                 localStorage.setItem('credentials',JSON.stringify(res.data))
                 //history.push("/");
-                document.querySelector('[rel="js-header-login"]').classList.remove('active');
+                document.querySelector('[rel="js-header-signin"]').classList.remove('active');
             }else{
                 // alert('Vui lòng nhập tài khoản khách hàng!');
                 alert('Sai tên đăng nhập/mật khẩu! Vui lòng thử lại!');
