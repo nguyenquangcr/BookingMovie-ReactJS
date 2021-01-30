@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SlickHeader from '../../components/slider';
 import Footer from '../../components/footer';
 import { useLayoutEffect, useState } from "react";
@@ -11,27 +11,32 @@ import Cinema from '../../components/home/cinema';
 import Header from '../../components/header';
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = 'Block Buster';
+    }, [])
+
     function useMediaQuery() {
         const [screenSize, setScreenSize] = useState([0, 0]);
-        
+
         useLayoutEffect(() => {
-          function updateScreenSize() {
-            setScreenSize([window.innerWidth, window.innerHeight]);
-          }
-          window.addEventListener("resize", updateScreenSize);
-          updateScreenSize();
-          return () => window.removeEventListener("resize", updateScreenSize);
+            function updateScreenSize() {
+                setScreenSize([window.innerWidth, window.innerHeight]);
+            }
+            window.addEventListener("resize", updateScreenSize);
+            updateScreenSize();
+            return () => window.removeEventListener("resize", updateScreenSize);
         }, []);
-        
+
         return screenSize;
     }
     const [width] = useMediaQuery();
-    return  (
+    return (
         <>
             <div className="header">
-                    <Header />
+                <Header />
                 <div className="container">
-                    <SlickHeader />                    
+                    <SlickHeader />
                     {width >= 992 ? <TicketBooking /> : null}
                 </div>
             </div>
