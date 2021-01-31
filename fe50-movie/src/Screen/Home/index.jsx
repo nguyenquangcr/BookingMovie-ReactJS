@@ -3,8 +3,6 @@ import SlickHeader from '../../components/slider';
 import Footer from '../../components/footer';
 import { useLayoutEffect, useState } from "react";
 
-//style css
-import './style.css'
 import HomeMovie from '../../components/home/home-movie';
 import TicketBooking from '../../components/home/ticket-booking';
 import Cinema from '../../components/home/cinema';

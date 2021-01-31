@@ -136,12 +136,10 @@ const TicketBooking = (props) => {
     const renderSubmit = () => {
         if (state.statusButton) {
             return (
-                <button type="submit" className="ticket-booking-button">
-                    <Link to={`/booking/${state.maLichChieu}`}>Mua vé</Link>
-                </button>
+                <Link className="ticket-booking-button" to={`/dat-ve/${state.maLichChieu}`}>Mua vé</Link>
             )
         } else {
-            return <button disabled type="submit" className="ticket-booking-button">Mua vé</button >
+            return <Link className="ticket-booking-button disable" to="/">Mua vé</Link>
         }
     }
 
@@ -178,7 +176,7 @@ const TicketBooking = (props) => {
                     {renderGio()}
                 </select>
             </div>
-            <div className="center">
+            <div className="center ticket-booking-action">
                 {renderSubmit()}
             </div>
         </div>

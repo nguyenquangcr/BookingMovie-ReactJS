@@ -9,12 +9,12 @@ const SoonMovie = (props) => {
                 return (
                     <div className="detail-scmovie-item" key={index}>
                         <div className="detail-scmovie-image">
-                            <Link to={`/commingsoon/${item.biDanh}-${item.maPhim}`}>
+                            <Link to={`/phim/${item.biDanh}-${item.maPhim}`}>
                                 <img src={item.hinhAnh} alt={item.tenPhim} />
                             </Link>
                         </div>
                         <div className="detail-scmovie-content">
-                            <Link to={`/commingsoon/${item.biDanh}-${item.maPhim}`} className="detail-scmovie-title">
+                            <Link to={`/phim/${item.biDanh}-${item.maPhim}`} className="detail-scmovie-title">
                                 {item.tenPhim}
                             </Link>
                             <div className="detail-scmovie-desc" dangerouslySetInnerHTML={{ __html: item.moTa }}></div>

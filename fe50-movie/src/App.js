@@ -5,6 +5,7 @@ import Home from './Screen/Home';
 import SignupScreen from './Screen/Signup';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SigninScreen from './Screen/Signin';
+import Movie from './Screen/Movie';
 import Booking from './Screen/Booking';
 import Detail from './Screen/Detail';
 import { getMovieSoon } from './redux/action/moviesoon.action';
@@ -44,10 +45,12 @@ function App() {
         <Route path='/dangnhap'  component={SigninScreen} />
         <Route path='/' exact={true} component={Home}>
         </Route>
-        <Route path="/booking/:maLichChieu">
+        <Route path="/dat-ve/:maLichChieu">
           <Booking />
         </Route>
-        <Route path="/movie/:tenPhim:maPhim">
+        <Route path='/phim' exact={true} component={Movie}>
+        </Route>
+        <Route path="/phim/:tenPhim:maPhim">
           <Detail />
         </Route>
       </Switch>

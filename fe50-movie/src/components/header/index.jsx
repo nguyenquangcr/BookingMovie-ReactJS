@@ -54,7 +54,7 @@ const Header = (props) => {
     const renderSearchMovie = () => {
         return listSearchMovie && listSearchMovie.map((item, index) => {
             return (
-                <Link to={`/movie/${item.biDanh}-${item.maPhim}`} key={index}>{item.tenPhim}</Link>
+                <li><Link to={`/phim/${item.biDanh}-${item.maPhim}`} key={index}>{item.tenPhim}</Link></li>
             )
         })
     }
@@ -76,12 +76,13 @@ const Header = (props) => {
                                 <NavLink exact activeClassName={'active'} to='/' className="header-menu-link">Trang chủ</NavLink>
                             </li>
                             <li className="header-menu-item">
-                                <NavLink className="header-menu-link" to='/phim'>Phim<i className="fa fa-angle-down" aria-hidden="true" onClick={(e) => handleHeaderMenuDropdown(e)}></i>
+                                <NavLink className="header-menu-link" to='/phim'>Phim
+                                {/* <i className="fa fa-angle-down" aria-hidden="true" onClick={(e) => handleHeaderMenuDropdown(e)}></i> */}
                                 </NavLink>
-                                <ul className="header-menu-dropdown">
+                                {/* <ul className="header-menu-dropdown">
                                     <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-dang-chieu'>Phim đang chiếu</NavLink></li>
                                     <li className="dropdown_item header-menu-dropdown-item"><NavLink className="header-menu-dropdown-link" to='/phim-sap-chieu'>Phim sắp chiếu</NavLink></li>
-                                </ul>
+                                </ul> */}
                             </li>
                             <li className="header-menu-item">
                                 <NavLink className="header-menu-link" to='/tin-tuc'>Tin tức<i className="fa fa-angle-down" aria-hidden="true" onClick={(e) => handleHeaderMenuDropdown(e)}></i></NavLink>
@@ -98,32 +99,33 @@ const Header = (props) => {
                         <ul className="header-menu-right">
                             {
                                 props.credentials ?
-                                    <li style={{ display: 'flex' }} className="header-menu-item">
-                                        <span className="header-menu-link">Hi {props.credentials.hoTen},</span>
-                                        <button onClick={() => _clearItem()} className="btn btn-success">Thoát</button>
+                                <li style={{ display: 'flex' }} className="header-menu-item">
+                                    <span className="header-menu-link">Hi {props.credentials.hoTen},</span>
+                                    <button onClick={() => _clearItem()} className="btn btn-success">Thoát</button>
+                                </li>
+                                :
+                                <>
+                                    <li className="header-menu-item">
+                                        <span className="header-menu-link header-menu-signup" onClick={() => handleShowPopupSignup()}>Đăng Ký</span>
                                     </li>
-                                    :
-                                    <>
-                                        <li className="header-menu-item">
-                                            <span className="header-menu-link header-menu-signup" onClick={() => handleShowPopupSignup()}>Đăng Ký</span>
-                                        </li>
-                                        <li className="header-menu-item">
-                                            <span className="header-menu-link header-menu-signin" onClick={() => handleShowPopupSignin()}>Đăng Nhập</span>
-                                        </li>
-                                    </>
+                                    <li className="header-menu-item">
+                                        <span className="header-menu-link header-menu-signin" onClick={() => handleShowPopupSignin()}>Đăng Nhập</span>
+                                    </li>
+                                </>
                             }
                         </ul>
                     </div>
                     <div className="header-search">
                         <select className="header-search-select">
-                            <option value="united">TV show</option>
-                            <option value="saab">Others</option>
+                            <option>Đang chiếu</option>
+                            <option>Sắp chiếu</option>
                         </select>
                         <input value={searchValue} onChange={(e) => onChangeSearchValue(e)} className="header-search-input" type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for" />
                         <i className="fa fa-search header-search-icon"></i>
-                    </div>
-                    <div>
-                        {renderSearchMovie()}
+                        
+                        <ul className="header-search-result scroll-custom">
+                            {renderSearchMovie()}
+                        </ul>
                     </div>
                     <div className="header-social">
                         <span>Theo dõi: </span>

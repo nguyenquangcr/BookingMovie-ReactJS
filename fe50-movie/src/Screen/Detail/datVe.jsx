@@ -57,7 +57,7 @@ const DatVe = (props) => {
                             if ((new Date(dayTime.ngayChieuGioChieu).toLocaleDateString()) === day) {
                                 return (
                                     <div>
-                                        <Link to={`/booking/${dayTime.maLichChieu}`}>
+                                        <Link to={`/dat-ve/${dayTime.maLichChieu}`}>
                                             {new Date(dayTime.ngayChieuGioChieu).toLocaleTimeString('vi-VN'
                                                 , { hour: '2-digit', }
                                             )}Gio

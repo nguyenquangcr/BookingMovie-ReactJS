@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CircularProgress } from "@material-ui/core";
-import { getMovieListRequest } from '../../../redux/action/movie.action';
+import { getMovieListRequest } from '../../redux/action/movie.action';
 
 const ShowMovie = (props) => {
     const dispatch = useDispatch();

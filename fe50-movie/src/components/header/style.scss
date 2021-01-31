@@ -131,6 +131,26 @@
                 height: 46px;
                 line-height: 46px;
             }
+            &-result {
+                position: absolute;
+                top: 100%;
+                left: 20%;
+                z-index: 1;
+                background-color: #fff;
+                width: calc(100% - 20%);
+                border-radius: 5px;
+                max-height: 300px;
+                overflow: auto;
+                a {
+                    color: #212529;
+                    display: block;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                    &:hover {
+                        color: var(--colorThird);
+                    }
+                }
+            }
         }
 
         &-social {
