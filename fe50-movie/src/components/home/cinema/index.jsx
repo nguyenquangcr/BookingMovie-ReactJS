@@ -29,7 +29,7 @@ const Cinema = (props) => {
                                                 </Link>
                                             </div>
                                             <div>
-                                                <Link className="mvschedule-movielist-title" to={`/phim/${product.maPhim}`}>
+                                                <Link className="mvschedule-movielist-title" to={`/phim/${product.biDanh}-${product.maPhim}`}>
                                                     {product.tenPhim}
                                                 </Link>
                                                 <div className="mvschedule-movielist-desc">Thời lượng: <span>120 phút</span></div>

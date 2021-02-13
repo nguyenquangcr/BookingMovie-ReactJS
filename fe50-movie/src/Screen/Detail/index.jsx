@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Link, animateScroll as scroll } from 'react-scroll'
+import { Link } from 'react-scroll'
 import { getDetailMovie } from '../../redux/action/detail.action';
 import Header from '.././../components/header/index';
 import Footer from '../../components/footer/index';
@@ -18,26 +18,32 @@ const Detail = () => {
     const dispatch = useDispatch();
     const detailMovie = useSelector((state) => state.detail.detailMovie);
     const maPhimCommingSoon = useSelector((state) => state.detail.maPhimCommingSoon);
+    const [idMovie, setidMovie] = useState('');
 
     useEffect(() => {
         const str = param.maPhim;
         const id = str.substring(str.lastIndexOf("-") + 1, str.length);
+        setidMovie(id);
         dispatch(getDetailMovie(id))
-    }, [])
+    }, [dispatch, param])
     useEffect(() => {
         document.title = detailMovie.tenPhim;
     }, [detailMovie])
-
     // kiem tra phim co phai coomingsoon khong
     useEffect(() => {
-        const str = param.maPhim;
-        const id = str.substring(str.lastIndexOf("-") + 1, str.length);
         maPhimCommingSoon && maPhimCommingSoon.map(item => {
-            if (item === id) {
-                return setMovieSoon('active');
+            if (idMovie !== item) {
+                setMovieSoon('');
             }
         })
-    }, [])
+    }, [idMovie, maPhimCommingSoon])
+    useEffect(() => {
+        maPhimCommingSoon && maPhimCommingSoon.map(item => {
+            if (idMovie === item) {
+                setMovieSoon('active');
+            }
+        })
+    }, [idMovie, maPhimCommingSoon])
 
     return (
         <div>
@@ -50,7 +56,7 @@ const Detail = () => {
                         <div className="col-12 col-lg-9">
                             <div className="row">
                                 <div className="col-4">
-                                    <div><img src={detailMovie.hinhAnh} /></div>
+                                    <div><img src={detailMovie.hinhAnh} alt='' /></div>
                                 </div>
                                 <div className="col-8">
                                     <div className="detail-title">{detailMovie.tenPhim}</div>
@@ -85,7 +91,7 @@ const Detail = () => {
                                             className="detail-action-item">
                                             <i className="fa fa-opencart"></i> Đặt vé
                                         </Link>
-                                        : null
+                                            : null
                                         }
                                         <Link
                                             className="detail-action-item"
@@ -112,12 +118,12 @@ const Detail = () => {
                                         <div className="detail-desc-content" dangerouslySetInnerHTML={{ __html: detailMovie.moTa }}></div>
                                     </div>
                                     {
-                                        !movieSoon ? 
-                                        <>
-                                            <div className="detail-system">
-                                                <DatVe Detail={detailMovie.heThongRapChieu} />
-                                            </div>
-                                        </> : null
+                                        !movieSoon ?
+                                            <>
+                                                <div className="detail-system">
+                                                    <DatVe Detail={detailMovie.heThongRapChieu} />
+                                                </div>
+                                            </> : null
                                     }
                                     <DanhGia />
                                 </div>

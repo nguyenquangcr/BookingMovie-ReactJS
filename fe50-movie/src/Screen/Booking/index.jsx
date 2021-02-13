@@ -31,7 +31,6 @@ const Booking = () => {
     const renderGhe = () => {
         return data?.map((ghe, index) => {
             return (
-                <>
                     <div key={index}
                         className={`booking-seat-item ${ghe.loaiGhe === 'Thuong' ? 'booking-seat-normal' : 'booking-seat-vip'} ${trangThaiGhe(ghe.daDat, ghe.dangChon)}`}
                         onClick={() => {
@@ -43,7 +42,6 @@ const Booking = () => {
                     >
                         <span>{ghe.stt}</span>
                     </div>
-                </>
             );
         });
     }

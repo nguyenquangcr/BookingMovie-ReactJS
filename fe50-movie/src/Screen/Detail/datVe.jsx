@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './booking.scss'
 
@@ -7,6 +7,36 @@ const DatVe = (props) => {
     const [maHeThongRap, setMaHeThongRap] = useState('');
     const [maCumRap, setMaCumRap] = useState('');
     const [day, setDay] = useState('');
+
+    useEffect(() => {
+        if (props.Detail) {
+            setMaHeThongRap(props.Detail[0].maHeThongRap)
+        }
+    }, [props.Detail]);
+
+    useEffect(() => {
+        if (maHeThongRap) {
+            return props.Detail && props.Detail.map(item => {
+                if (item.maHeThongRap === maHeThongRap) {
+                    setMaCumRap(item.cumRapChieu[0].maCumRap);
+                }
+            })
+        }
+    }, [maHeThongRap, props.Detail])
+
+    useEffect(() => {
+        if (maCumRap && maHeThongRap) {
+            return props.Detail && props.Detail.map(item => {
+                if (item.maHeThongRap === maHeThongRap) {
+                    return item.cumRapChieu.map(product => {
+                        if (product.maCumRap === maCumRap) {
+                            setDay(new Date(product.lichChieuPhim[0].ngayChieuGioChieu).toLocaleDateString())
+                        }
+                    })
+                }
+            })
+        }
+    }, [maCumRap, maHeThongRap, props.Detail])
 
     const renderSystem = () => {
         return props.Detail && props.Detail.map(item => {
