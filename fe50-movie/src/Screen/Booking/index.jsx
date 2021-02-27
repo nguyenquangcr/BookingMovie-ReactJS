@@ -5,6 +5,7 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import './style.scss';
 import { getBookingRequest, postBookingRequest } from '../../redux/action/booking.action';
+import CountTime from '../../components/count-time';
 
 const Booking = () => {
     const history = useHistory();
@@ -118,6 +119,7 @@ const Booking = () => {
                         </div>
                     </div>
                 </div>
+                <div>Thời gian còn lại: {<CountTime />}</div>
             </div>
             <Footer />
         </>

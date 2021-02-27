@@ -25,7 +25,8 @@ const initialState = {
       {user : 'Vũ Nguyên',
       star: 5,
       comment: 'Phim rất hay mong có phần tiếp theo !'}
-    ]
+    ],
+    trailer:null
   };
   
 function detailReducer(state = initialState, actions) {
@@ -38,6 +39,9 @@ function detailReducer(state = initialState, actions) {
         const newComment = [...state.comment];
         newComment.push(payload);
         return {...state, comment:newComment}
+      }
+      case 'TRALER-DETAIL': {
+        return { ...state, trailer: payload };
       }
       default:
         return state;

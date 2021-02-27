@@ -10,6 +10,7 @@ import DanhGia from './danhGia';
 import ShowMovie from './show-movie';
 import SoonMovie from './soon-movie';
 import './style.scss';
+import ModalTrailer from '../../components/modalTrailer';
 
 const Detail = () => {
     // const [title, setTitle] = useState('');
@@ -45,6 +46,12 @@ const Detail = () => {
         })
     }, [idMovie, maPhimCommingSoon])
 
+    const onclickTrailer = (trailer) => {
+        dispatch({
+            type:'TRALER-DETAIL',
+            payload:trailer
+        })
+    }
     return (
         <div>
             <div className="header">
@@ -78,7 +85,7 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className="detail-action">
-                                        <div className="detail-action-item">
+                                        <div className="detail-action-item" onClick={() => onclickTrailer(detailMovie.trailer)} data-toggle="modal" data-target="#modalTrailer">
                                             <i className="fa fa-film"></i> Trailer
                                         </div>
                                         {!movieSoon ? <Link
@@ -142,6 +149,7 @@ const Detail = () => {
                     </div>
                 </div>
             </div>
+            <ModalTrailer />
             <div>
                 <Footer />
             </div>
