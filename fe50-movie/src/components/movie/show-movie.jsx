@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CircularProgress } from "@material-ui/core";
-import { getMovieListRequest } from '../../../redux/action/movie.action';
+import { getMovieListRequest } from '../../redux/action/movie.action';
 
 const ShowMovie = (props) => {
     const dispatch = useDispatch();
@@ -16,7 +16,6 @@ const ShowMovie = (props) => {
 
     const renderHtml = () => {
         return props.movieList && props.movieList.map((item, index) => {
-            console.log(item);
             return (
                 <Link to={`/phim/${item.biDanh}-${item.maPhim}`} className="scmovie-list-item" key={index}>
                     <div className="scmovie-list-content">

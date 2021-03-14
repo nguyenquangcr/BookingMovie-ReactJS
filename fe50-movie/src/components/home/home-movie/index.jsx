@@ -10,38 +10,31 @@ const HomeMovie = () => {
 
     const [isValid, setIsValid] = useState(true);
     const renderTiltleShowMovie = () => {
-        return isValid ? `yellow` : "white"
+        return isValid ? "active" : ""
     }
     const renderTiletleSoonMovie = () => {
-        return isValid ? "white" : `yellow`
+        return isValid ? "" : "active"
     }
     const renderHtml = () => {
         return isValid ? <ShowMovie/>  : <SoonMovie />
     }
     AOS.init()
     return (
-        <div id="home-movie">
-            <section className='container' >
-                <div className="container-fluid">
-                <h3 className='title-index'>IN THEATER</h3>
-                    <ul className="title">
-                        <li data-aos="fade-right" data-aos-duration="600" 
-                        className="movie-play" style={{ color: renderTiltleShowMovie(),paddingRight:'20px',marginBottom:'40px' }} 
-                        onClick={() => {setIsValid(true)}}>
-                                #POPULAR
-                        </li>
-                        <li data-aos="fade-left" data-aos-duration="600" 
-                        className="movie-soon" style={{ color: renderTiletleSoonMovie() }} 
-                        onClick={() => {setIsValid(false)}}>
-                                #COMING SOON
-                        </li>
-                    </ul>
-                    <div className="content-phim container-fluid">
-                        {renderHtml()}
-                    </div>
+        <section className="scmovie section-padding">
+            <div className="container" >
+                <ul className="scmovie-tabs">
+                    <li className={renderTiltleShowMovie()} onClick={() => {setIsValid(true)}}>
+                        #Phim đang chiếu
+                    </li>
+                    <li className={renderTiletleSoonMovie()} onClick={() => {setIsValid(false)}}>
+                        #Phim sắp chiếu
+                    </li>
+                </ul>
+                <div className="scmovie-list">
+                    {renderHtml()}
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     )
 }
 

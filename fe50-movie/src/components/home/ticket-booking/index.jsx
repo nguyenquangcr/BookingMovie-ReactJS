@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { actGetListDetailFilm } from '../../../redux/action/movie.action';
 
 const TicketBooking = (props) => {
-    const [maPhim, setmaPhim] = useState('')
+    const [maPhim, setmaPhim] = useState()
 
     const [state, setState] = useState(
         {
@@ -65,7 +65,6 @@ const TicketBooking = (props) => {
     }
     //date
     const renderDate = () => {
-
         if (state.maRap) {
             return props.listDetailFilm.heThongRapChieu && props.listDetailFilm.heThongRapChieu.map(item => {
                 if (item.maHeThongRap === state.maRap) {
@@ -137,12 +136,10 @@ const TicketBooking = (props) => {
     const renderSubmit = () => {
         if (state.statusButton) {
             return (
-                <button type="submit" className="ticket-booking-button">
-                    <Link to={`/booking/${state.maLichChieu}`}>Mua vé</Link>
-                </button>
+                <Link className="ticket-booking-button" to={`/dat-ve/${state.maLichChieu}`}>Mua vé</Link>
             )
         } else {
-            return <button disabled type="submit" className="ticket-booking-button">Mua vé</button >
+            return <Link className="ticket-booking-button disable" to="/">Mua vé</Link>
         }
     }
 
@@ -160,14 +157,13 @@ const TicketBooking = (props) => {
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeCinema} className="form-control ticket-booking-select">
                     <option value="chon-rap" style={{ display: "none" }}>Chọn rạp</option>
-                    {/* {this.validationChonRap()} */}
                     {renderRap()}
                 </select>
             </div>
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeDate} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
-                        Chọn Ngay Chieu
+                        Chọn ngày chiếu
                     </option>
                     {renderDate()}
                 </select>
@@ -175,12 +171,12 @@ const TicketBooking = (props) => {
             <div className="select-group ticket-booking-group">
                 <select onChange={handleOnchangeGio} className="form-control ticket-booking-select">
                     <option value="chon-ngay" style={{ display: "none" }}>
-                        Chọn Gio Chieu
+                        Chọn giờ chiếu
                     </option>
                     {renderGio()}
                 </select>
             </div>
-            <div className="center">
+            <div className="center ticket-booking-action">
                 {renderSubmit()}
             </div>
         </div>

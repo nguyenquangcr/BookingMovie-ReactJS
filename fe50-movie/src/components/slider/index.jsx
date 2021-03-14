@@ -1,29 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux';
 import './style.scss';
 import Slider from 'react-slick';
 
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
-import slider1 from '../../assets/image/slider1.jpg';
-import slider2 from '../../assets/image/slider2.jpg';
-import slider3 from '../../assets/image/slider3.jpg';
-import slider4 from '../../assets/image/slider4.jpg';
+const SlickHeader = () => {
 
-export default class SlickHeader extends Component {
-    render() {
-        const settings = {
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            arrows: false,
-            draggable:true,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            dots: true,
-            responsive: [
-                {
+    const movieSoon = useSelector(state => state.movie.listSoonMovie)
+    const settings = {
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        arrows: false,
+        draggable: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true,
+        responsive: [
+            {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
@@ -31,99 +29,53 @@ export default class SlickHeader extends Component {
                     infinite: true,
                     dots: true
                 }
-                },
-                {
+            },
+            {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
                 }
-                },
-                {
+            },
+            {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                 }
-                }
-            ]
-        };
-        return (
-            <Slider className="banner-slider" {...settings}>
-                <div className="banner-slider-item">
-                    <a href="#">
-                        <img className="banner-slider-image" src={slider1} alt="" />
+            }
+        ]
+    };
+
+    const rederSlider = () => {
+        return movieSoon && movieSoon.map((item, index) => {
+            return (
+                <Link to={`/phim/${item.biDanh}-${item.maPhim}`} className="banner-slider-item" key={index}>
+                    <div className="banner-slider-content">
+                        <div className="banner-slider-image">
+                            <img src={item.hinhAnh} alt={item.tenPhim} />
+                        </div>
                         <div className="banner-slider-overlay">
-                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
+                            <div className="banner-slider-time">{new Date(item.ngayKhoiChieu).toLocaleDateString('vi-VN', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}</div>
                             <div className="banner-slider-title">
-                                Tên phim
+                                {item.tenPhim}
                             </div>
                             <div className="banner-slider-star">
-                                <i className="fa fa-star"></i> <span>4.5/</span>5
+                                <i className="fa fa-star"></i> <span>{item.danhGia}/</span>10
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div className="banner-slider-item">
-                    <a href="#">
-                        <img className="banner-slider-image" src={slider2} alt="" />
-                        <div className="banner-slider-overlay">
-                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
-                            <div className="banner-slider-title">
-                                Tên phim
-                            </div>
-                            <div className="banner-slider-star">
-                                <i className="fa fa-star"></i> <span>4.5/</span>5
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div className="banner-slider-item">
-                    <a href="#">
-                        <img className="banner-slider-image" src={slider3} alt="" />
-                        <div className="banner-slider-overlay">
-                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
-                            <div className="banner-slider-title">
-                                Tên phim
-                            </div>
-                            <div className="banner-slider-star">
-                                <i className="fa fa-star"></i> <span>4.5/</span>5
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div className="banner-slider-item">
-                    <a href="#">
-                        <img className="banner-slider-image" src={slider4} alt="" />
-                        <div className="banner-slider-overlay">
-                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
-                            <div className="banner-slider-title">
-                                Tên phim
-                            </div>
-                            <div className="banner-slider-star">
-                                <i className="fa fa-star"></i> <span>4.5/</span>5
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div className="banner-slider-item">
-                    <a href="#">
-                        <img className="banner-slider-image" src={slider4} alt="" />
-                        <div className="banner-slider-overlay">
-                            <div className="banner-slider-time">Thứ Hai, 30/11/2020</div>
-                            <div className="banner-slider-title">
-                                Tên phim
-                            </div>
-                            <div className="banner-slider-star">
-                                <i className="fa fa-star"></i> <span>4.5/</span>5
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </Slider>
-        )
+                    </div>
+                </Link>
+            )
+        })
     }
+    return (
+        <div>
+            <Slider className="banner-slider" {...settings}>
+                {rederSlider()}
+            </Slider>
+        </div>
+    )
 }
 
-
-
+export default SlickHeader
