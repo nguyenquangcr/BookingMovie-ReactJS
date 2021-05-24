@@ -1,6 +1,9 @@
 const initialState = {
     isLoading: false,
   };
+
+  const test = '';
+
   
   const commonReducer = (state = initialState, action) => {
     let { type } = action; 
